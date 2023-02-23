@@ -21,7 +21,7 @@
     <div id="topnav" class="row bg-black pt-lg-2 d-none d-lg-flex">
       <div class="col-12 col-lg-4 my-auto py-1 text-center text-lg-left">
         <a class="nav-link logo-font" href="{% url 'home' %}">
-          <h2 class="text-white">Tribal <strong>Fashion</strong></h2>
+          <h1 class="text-white">Tribal <strong>Fashion</strong></h1>
         </a>
       </div>
       <div class="col-12 col-lg-4 my-auto py-1">
@@ -69,6 +69,15 @@
         </ul>
       </div>
     </div>
+    <div class="row bg-black">
+      <nav class="navbar navbar-expand-lg navbar-light w-100">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon"><i class="fa-solid fa-bars"></i></span>
+          </button>
+          {% include 'includes/mobile-nav.html' %}
+          {% include 'includes/main-nav.html' %}
+      </nav>
+  </div>
   </header>
 
   {% if messages %}
