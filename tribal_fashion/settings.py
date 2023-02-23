@@ -25,7 +25,6 @@ SECRET_KEY = 'django-insecure-c74o4g(_+%-(naaypw4yrb)qd8*15oka%ax17b^2e&7v95fx3=
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = []
 
 
@@ -61,8 +60,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),
-            os.path.join(BASE_DIR, 'templates', 'allauth'),
+            BASE_DIR / 'templates',
+            BASE_DIR / 'templates/allauth',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -146,6 +145,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (BASE_DIR / 'static',)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
