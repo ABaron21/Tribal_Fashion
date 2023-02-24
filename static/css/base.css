@@ -1,10 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300;400;600&display=swap');
 body{
+    background: url('/media/hero-image.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: calc(100vh - 164px);
     font-family: 'Signika Negative', sans-serif;
     font-weight: 300;
 }
 .bg-black{
     background-color: #000;
+}
+.navbar-bg{
+    background-color: #000;
+}
+
+.text-black{
+    color: #000;
 }
 
 .border-black {
@@ -26,6 +36,12 @@ body{
 
 .btn-white{
     background: white;
+}
+.btn-black{
+    background: #000;
+}
+.btn-slim{
+    height: 50%;
 }
 
 .dropdown-menu{
@@ -52,3 +68,53 @@ body{
 #outfits-link, #specials-link{
     font-size: 20px;
 }
+
+/* -------------------------------- Media Queries */
+
+/* Slightly larger container on xl screens */
+@media (min-width: 1200px) {
+    .container {
+      max-width: 80%;
+    }
+  }
+  
+  /* fixed top navbar only on medium and up */
+  @media (min-width: 992px) {
+      .fixed-top-desktop-only {
+          position: fixed;
+          top: 0;
+          right: 0;
+          left: 0;
+          z-index: 1030;
+      }
+      .navbar-bg{
+        background-color: white;
+      }
+      .main-search-bar{
+        height: 50px;
+      }
+      .header-container {
+          padding-top: 164px;
+      }
+      .hero-prompt{
+        margin-top: 300px;
+      }
+      .signup-prompt{
+        margin-left: 300px;
+      }
+      .page-footer{
+        padding-top: 0;
+        height: 30px;
+    }
+    .social-link{
+        color: white;
+        text-align: center;
+        font-size: 15px;
+        margin-top: 5px;
+    }
+    .copyright-text{
+        text-align: center;
+        font-size: 11px;
+        margin-top: 5px;
+    }
+  }

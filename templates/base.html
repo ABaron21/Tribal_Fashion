@@ -24,7 +24,7 @@
           <h1 class="text-white">Tribal <strong>Fashion</strong></h1>
         </a>
       </div>
-      <div class="col-12 col-lg-4 my-auto py-1">
+      <div class="col-12 col-lg-4 my-auto py-1 main-search-bar">
         <form method="GET" action="">
           <div class="input-group w-100">
             <input type="text" class="form-control border border-black" name="q" placeholder="Search Tribal Fashion">
@@ -69,23 +69,48 @@
         </ul>
       </div>
     </div>
-    <div class="row bg-black">
+    <div class="row navbar-bg">
       <nav class="navbar navbar-expand-lg navbar-light w-100">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="icon"><i class="fa-solid fa-bars"></i></span>
-          </button>
-          {% include 'includes/mobile-nav.html' %}
-          {% include 'includes/main-nav.html' %}
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
+          aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon"><i class="fa-solid fa-bars"></i></span>
+        </button>
+        {% include 'includes/mobile-nav.html' %}
+        {% include 'includes/main-nav.html' %}
       </nav>
-  </div>
+    </div>
+    <div class="row text-center" id="delivery-banner">
+      <div class="col bg-black text-white">
+        <h4 class="logo-font my-1">Free Delievery on Orders Over £{{ free_shipping_threshold }}</h4>
+      </div>
+    </div>
   </header>
 
   {% if messages %}
   <div class="message-container"></div>
   {% endif %}
 
+  {% block page_heading %}
+  {% endblock %}
+
   {% block content %}
   {% endblock %}
+
+  <footer class="page-footer bg-black fixed-bottom">
+    <div class="container">
+      <div class="row">
+        <a class="col s2 social-link text-white" href="https://www.facebook.com" target="_blank"><i
+            class="fa-brands fa-square-facebook"></i></a>
+        <a class="col s2 social-link text-white" href="https://www.twitter.com" target="_blank"><i
+            class="fa-brands fa-square-twitter"></i></a>
+        <a class="col s2 social-link text-white" href="https://www.instagram.com" target="_blank"><i
+            class="fa-brands fa-instagram"></i></a>
+        <a class="col s2 social-link text-white" href="https://www.youtube.com" target="_blank"><i
+            class="fa-brands fa-youtube"></i></a>
+        <p class="col s4 copyright-text text-white">&copy; Tribal Developments</p>
+      </div>
+    </div>
+  </footer>
 
   <script src="https://kit.fontawesome.com/aa35820a25.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"
