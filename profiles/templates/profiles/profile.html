@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <h2 class="logo-font mt-2 mb-4">{{ account.user.username }}'s Profile</h2>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                Account Details
+            </div>
+            <div class="col-12 col-lg-6">
+                Orders
+            </div>
+        </div>
+    </div>
+{% endblock %}
