@@ -12,6 +12,15 @@ body{
 .navbar-bg{
     background-color: #000;
 }
+.overlay {
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background: white;
+	z-index: -1;
+}
 
 .text-black{
     color: #000;
@@ -94,7 +103,7 @@ body{
         height: 50px;
       }
       .header-container {
-          padding-top: 164px;
+          padding-top: 200px;
       }
       .hero-prompt{
         margin-top: 300px;
