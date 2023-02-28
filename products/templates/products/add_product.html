@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <h2 class="logo-font mt-2 mb-4">Add Product</h2>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <form action="#" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="text-right">
+                        <a href="#" class="text-white btn btn-black btn-slim text-uppercase mb-5">Cancel</a>
+                        <button type="submit" class="text-white btn btn-black btn-slim text-uppercase mb-5">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
