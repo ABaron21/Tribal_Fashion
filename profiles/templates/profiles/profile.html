@@ -27,7 +27,7 @@
                     <div class="col-12 col-md-6 mt-2">
                         <form action="#" method="POST">
                             {% csrf_token %}
-                            {{ form|crispy }}
+                            {{ accountForm|crispy }}
                             <div class="text-left">
                                 <button type="submit" class="text-white btn btn-black btn-slim text-uppercase mb-5">Update Info</button>
                                 <a href="#" class="text-white btn btn-black btn-slim text-uppercase mb-5">Change Account Details</a>
@@ -35,12 +35,16 @@
                         </form>
                     </div>
                     <div class="col-12 col-md-6 mt-2">
-                        <h5 class="text-center">Want to become a Retailer?</h5>
-                        <p class="text-center">Have you got clothes you don't wear anymore,</p>
-                        <p class="text-center">want to gain some extra cash for them?</p>
-                        <div class="text-center">
-                            <a href="#" class="text-white btn btn-black btn-slim text-uppercase">Apply to Retail</a>
-                        </div>
+                        <form class="retailer-form" action="#" method="POST">
+                            {% csrf_token %}
+                            {{ retailerForm|crispy }}
+                            <h5 class="text-center">Want to become a Retailer?</h5>
+                            <p class="text-center">Have you got clothes you don't wear anymore,</p>
+                            <p class="text-center">want to gain some extra cash for them?</p>
+                            <div class="text-center">
+                                <a href="#" class="text-white btn btn-black btn-slim text-uppercase">Apply to Retail</a>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

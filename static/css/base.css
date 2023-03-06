@@ -83,7 +83,9 @@ body{
 }
 
 /* Profile Page */
-
+.retailer-form label{
+    visibility: hidden;
+}
 
 /* -------------------------------- Media Queries */
 
