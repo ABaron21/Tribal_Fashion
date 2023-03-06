@@ -14,16 +14,39 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-6">
-                <h2 class="logo-font mt-2 mb-4">{{ account.user.username }}'s Profile</h2>
+                <hr>
+                <h2 class="logo-font mt-2 mb-3">{{ account.user.username }}'s Profile</h2>
                 <hr>
             </div>
         </div>
         <div class="row">
             <div class="col-12 col-lg-6">
-                Account Details
+                <h4 class="text-center">Account Details</h4>
+                <hr class="short-rule">
+                <div class="row">
+                    <div class="col-12 col-md-6 mt-2">
+                        <form action="#" method="POST">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <div class="text-left">
+                                <button type="submit" class="text-white btn btn-black btn-slim text-uppercase mb-5">Update Info</button>
+                                <a href="#" class="text-white btn btn-black btn-slim text-uppercase mb-5">Change Account Details</a>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-12 col-md-6 mt-2">
+                        <h5 class="text-center">Want to become a Retailer?</h5>
+                        <p class="text-center">Have you got clothes you don't wear anymore,</p>
+                        <p class="text-center">want to gain some extra cash for them?</p>
+                        <div class="text-center">
+                            <a href="#" class="text-white btn btn-black btn-slim text-uppercase">Apply to Retail</a>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-12 col-lg-6">
-                Orders
+                <h4 class="text-center">Orders</h4>
+                <hr class="short-rule">
             </div>
         </div>
     </div>

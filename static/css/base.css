@@ -50,7 +50,7 @@ body{
     background: #000;
 }
 .btn-slim{
-    height: 50%;
+    height: 35px;
 }
 
 .dropdown-menu{
@@ -77,6 +77,13 @@ body{
 #outfits-link, #specials-link{
     font-size: 20px;
 }
+
+.short-rule{
+    width: 30%;
+}
+
+/* Profile Page */
+
 
 /* -------------------------------- Media Queries */
 
