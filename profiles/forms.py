@@ -5,7 +5,8 @@ from .models import UserAccount, RetailAccount
 class UserAccountForm(forms.ModelForm):
     class Meta:
         model = UserAccount
-        exclude = ('user',)
+        exclude = ('user', 'retailer',
+                   'retailer_requested')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

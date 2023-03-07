@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import (render, get_object_or_404, redirect, reverse)
 from .models import UserAccount, RetailAccount
 from .forms import UserAccountForm, RetailerRequestForm
 
@@ -15,3 +15,14 @@ def profile(request):
     }
 
     return render(request, template, context)
+
+
+def retailer_request(request):
+    account = get_object_or_404(UserAccount, user=request.user)
+    if request.method == 'POST':
+        form = RetailerRequestForm(request.POST, instance=account)
+        if form.is_valid():
+            form.save()
+            account.retailer_requested = True
+            account.save()
+            return redirect(reverse('profile'), args=form)

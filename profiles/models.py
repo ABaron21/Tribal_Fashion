@@ -13,6 +13,8 @@ class UserAccount(models.Model):
     town_or_city = models.CharField(max_length=254, null=True, blank=True)
     county = models.CharField(max_length=254, null=True, blank=True)
     country = CountryField(blank_label='Country', null=True, blank=False)
+    retailer_requested = models.BooleanField(default=False)
+    retailer = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.username
