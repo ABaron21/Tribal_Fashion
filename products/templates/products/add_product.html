@@ -19,9 +19,16 @@
         </div>
         <div class="row">
             <div class="col-12 col-md-6">
-                <form action="#" method="POST" enctype="multipart/form-data">
+                <form action="{% url 'add_product' retailer.id %}" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
+                    <input type="text" name="sku" value="{{sku}}" maxlength="254" class="border-black textinput form-control" id="sku" hidden>
                     {{ form|crispy }}
+                    <label for="seller" class="form-label">Seller</label>
+                    {% if retailer.user.is_superuser%}
+                        <input type="text" name="seller" value="Tribal Fashion" maxlength="254" class="border-black textinput form-control" id="seller">
+                    {% else %}
+                        <input type="text" name="seller" value="{{retailer.user.username}}" maxlength="254" class="border-black textinput form-control" id="seller">
+                    {% endif %}
                     <div class="text-right">
                         <a href="#" class="text-white btn btn-black btn-slim text-uppercase mb-5">Cancel</a>
                         <button type="submit" class="text-white btn btn-black btn-slim text-uppercase mb-5">Add</button>

@@ -37,6 +37,21 @@
                     <div class="col-12 col-md-6 mt-2">
                         {% if account.retailer_requested %}
                             <h5 class="text-center">Your Request Has Been Sent!</h5>
+                        {% elif account.retailer%}
+                            <h5 class="text-center">Retailer Options</h5>
+                            <hr class="short-rule">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="text-center">
+                                        <a href="{% url 'add_product' account.id%}" class="text-white btn btn-black btn-slim text-uppercase mb-5">Add Product</a>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-center">
+                                        <a href="#" class="text-white btn btn-black btn-slim text-uppercase mb-5">My Products</a>
+                                    </div>
+                                </div>
+                            </div>
                         {% else %}
                             <form class="retailer-form" action="{% url 'retailer_request' %}" method="POST">
                                 {% csrf_token %}
