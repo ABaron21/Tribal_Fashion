@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <hr>
+                <h2 class="logo-font mt-2 mb-3">Management Dashboard</h2>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <h4 class="text-center">Administration Controls</h4>
+                <hr class="short-rule">
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <div class="text-center">
+                            <a href="{% url 'retailer_requests' %}" class="text-white btn btn-black btn-slim text-uppercase">Retailer Requests</a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6"></div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
