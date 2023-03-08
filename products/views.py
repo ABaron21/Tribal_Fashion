@@ -1,5 +1,4 @@
-from django.shortcuts import (render, get_object_or_404, get_list_or_404,
-                              redirect, reverse)
+from django.shortcuts import (render, get_object_or_404, redirect, reverse)
 import string
 import random
 
@@ -10,11 +9,20 @@ from profiles.models import UserAccount
 # Create your views here.
 
 
-def products(request):
-    products = get_list_or_404(Product)
+def all_products(request):
+    products = Product.objects.all()
     template = 'products/products.html'
     context = {
         'products': products
+    }
+    return render(request, template, context=context)
+
+
+def product_details(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    template = 'products/product_detail.html'
+    context = {
+        'product': product
     }
     return render(request, template, context=context)
 
