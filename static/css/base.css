@@ -87,6 +87,11 @@ body{
     visibility: hidden;
 }
 
+/* Products */
+.seller-name{
+    font-size: 16px;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
