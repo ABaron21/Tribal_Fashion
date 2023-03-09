@@ -91,7 +91,10 @@ body{
 .seller-name{
     font-size: 12px;
 }
-
+.bag_img{
+    width: 200px;
+    height: 200px;
+}
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
