@@ -45,7 +45,25 @@
                                         <p>{{ item.product.price }}</p>
                                     </td>
                                     <td>
-                                        <p>{{ item.quantity }}</p>
+                                        <form action="" method="post">
+                                            {% csrf_token%}
+                                            <div class="form-group w-50">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <button class="decrease-qty btn btn-black rounded-0" data-item_id="{{ item.item_id }}" id="decrease_qty_{{ item.item_id }}">
+                                                            <span class="text-white"><i class="fas fa-minus fa-sm"></i></span>
+                                                        </button>
+                                                    </div>
+                                                    <input class="form-control qty_input" type="number" name="quantity"
+                                                     value="{{ item.quantity}}" min="1" max="99" data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
+                                                    <div class="input-group-append">
+                                                        <button class="increase-qty btn btn-black rounded-0" data-item_id="{{ item.item_id }}" id="increase_qty_{{ item.item_id }}">
+                                                            <span class="text-white"><i class="fas fa-plus fa-sm"></i></span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </td>
                                     <td>
                                         <p>{{ item.product.price | calc_subtotal:item.quantity }}</p>
@@ -57,9 +75,9 @@
                                     <h6><strong>Bag Total: ${{ total|floatformat:2 }}</strong></h6>
                                     <h6>Delivery: ${{ delivery|floatformat:2 }}</h6>
                                     <h4 class="mt-4"><strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong></h4>
-                                    {% if free_delivery_delta > 0 %}
-                                        <p class="mb-1 text-danger">
-                                            You could get free delivery by spending just <strong>${{ free_delivery_delta }}</strong> more!
+                                    {% if free_delivery_left > 0 %}
+                                        <p class="mb-3 text-danger">
+                                            You could get free delivery by spending just <strong>${{ free_delivery_left }}</strong> more!
                                         </p>
                                     {% endif %}
                                 </td>
@@ -90,4 +108,9 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block postloadjs%}
+{{ block.super }}
+{% include 'products/includes/quantity_adjustment.html' %}
 {% endblock %}
