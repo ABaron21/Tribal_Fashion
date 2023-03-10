@@ -95,6 +95,10 @@ body{
     width: 200px;
     height: 200px;
 }
+.update-link,
+.remove-link{
+    cursor: pointer;
+}
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */

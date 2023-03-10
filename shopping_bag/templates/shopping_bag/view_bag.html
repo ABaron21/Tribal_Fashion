@@ -44,13 +44,13 @@
                                     <td>
                                         <p>{{ item.product.price }}</p>
                                     </td>
-                                    <td>
-                                        <form action="" method="post">
-                                            {% csrf_token%}
+                                    <td class="w-25">
+                                        <form class="quantity-form" action="{% url 'adjust_quantity' item.item_id %}" method="POST">
+                                            {% csrf_token %}
                                             <div class="form-group w-50">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
-                                                        <button class="decrease-qty btn btn-black rounded-0" data-item_id="{{ item.item_id }}" id="decrease_qty_{{ item.item_id }}">
+                                                        <button class="decrease-qty btn btn-black rounded-0" data-item_id="{{ item.item_id }}" id="decrease-qty_{{ item.item_id }}">
                                                             <span class="text-white"><i class="fas fa-minus fa-sm"></i></span>
                                                         </button>
                                                     </div>
@@ -64,6 +64,8 @@
                                                 </div>
                                             </div>
                                         </form>
+                                        <a class="update-link text-info">Update</a>
+                                        <a class="remove-link text-danger ml-3" id="remove_{{item.item_id}}">Delete</a>
                                     </td>
                                     <td>
                                         <p>{{ item.product.price | calc_subtotal:item.quantity }}</p>
@@ -113,4 +115,22 @@
 {% block postloadjs%}
 {{ block.super }}
 {% include 'products/includes/quantity_adjustment.html' %}
+<script type="text/javascript">
+    $('.update-link').click(function(e){
+        var form = $(this).prev('.quantity-form');
+        form.submit();
+    })
+
+    $('.remove-link').click(function(e){
+        var csrfToken = "{{csrf_token}}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var url = `/shopping_bag/remove_item/${itemId}`
+        var data = {'csrfmiddlewaretoken':csrfToken}
+
+        $.post(url, data)
+            .done(function(){
+                location.reload();
+            })
+    })
+</script>
 {% endblock %}
