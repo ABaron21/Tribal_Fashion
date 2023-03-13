@@ -73,7 +73,8 @@
             </div>
           </li>
           <li class="list-inline-item text-white"><a
-              class="{% if grand_total %}text-info font-weight-bold{% else %}text-white{% endif %} nav-link" href="{% url 'view_bag' %}">
+              class="{% if grand_total %}text-info font-weight-bold{% else %}text-white{% endif %} nav-link"
+               href="{% if request.user.is_authenticated %}{% url 'view_bag' %}{% else %}{% url 'account_login'%}{% endif %}">
               <div class="text-center">
                 <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                 <p class="my-0">
