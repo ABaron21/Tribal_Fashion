@@ -5,12 +5,13 @@ from .models import UserAccount, RetailAccount
 class UserAccountForm(forms.ModelForm):
     class Meta:
         model = UserAccount
-        exclude = ('user', 'retailer',
+        exclude = ('retailer',
                    'retailer_requested')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         placeholders = {
+            'user': 'User',
             'first_name': 'First Name',
             'last_name': 'Last Name',
             'phone_number': 'Phone Number',
@@ -21,6 +22,7 @@ class UserAccountForm(forms.ModelForm):
         }
 
         self.fields['first_name'].widget.attrs['autofocus'] = True
+        self.fields['user'].widget.attrs['hidden'] = True
         for field in self.fields:
             if field != 'country':
                 if self.fields[field].required:

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <hr>
+                <h2 class="logo-font mt-2 mb-3">{{ user.username }}'s Profile Set Up</h2>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <h4 class="text-center">Account Details</h4>
+                <hr class="short-rule">
+                <div class="row">
+                    <div class="col-12 col-md-6 mt-2">
+                        <form action="{% url 'profile_setup' %}" method="POST">
+                            {% csrf_token %}
+                            {{ accountForm|crispy }}
+                            <div class="text-left">
+                                <button type="submit" class="text-white btn btn-black btn-slim text-uppercase mb-5">Submit Account Details</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

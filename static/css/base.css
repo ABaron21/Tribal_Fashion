@@ -81,10 +81,30 @@ body{
 .short-rule{
     width: 30%;
 }
+select,
+select option {
+    color: #000000;
+    padding-left: 7px;
+}
+
+select:invalid,
+select option[value=""] {
+    color: #aab7c4 !important;
+}
+
+select{
+  height: 40px;
+}
 
 /* Profile Page */
 .retailer-form label{
     visibility: hidden;
+}
+#div_id_user label{
+    visibility: hidden;
+}
+#div_id_user{
+    height: 0;
 }
 
 /* Products */

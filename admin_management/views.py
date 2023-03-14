@@ -1,4 +1,4 @@
-from django.shortcuts import (render, get_object_or_404, get_list_or_404,
+from django.shortcuts import (render, get_object_or_404, 
                               redirect, reverse)
 from profiles.models import UserAccount, RetailAccount
 
@@ -13,7 +13,7 @@ def management_dashboard(request):
 
 
 def retailer_requests(request):
-    requests = get_list_or_404(UserAccount, retailer_requested=True)
+    requests = UserAccount.objects.all()
     template = 'admin_management/retailer_requests.html'
     context = {
         'requests': requests

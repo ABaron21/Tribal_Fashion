@@ -1,4 +1,5 @@
 from django.shortcuts import (render, get_object_or_404, redirect, reverse)
+from django.contrib.auth.models import User
 from .models import UserAccount, RetailAccount
 from .forms import UserAccountForm, RetailerRequestForm
 
@@ -26,3 +27,27 @@ def retailer_request(request):
             account.retailer_requested = True
             account.save()
             return redirect(reverse('profile'), args=form)
+
+
+def profile_setup(request):
+    user = get_object_or_404(User, pk=request.user.id)
+    accountForm = UserAccountForm(initial={
+        'user': user,
+    })
+    if request.method == 'POST':
+        form = UserAccountForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('profile'))
+    accounts = UserAccount.objects.all()
+    for account in accounts:
+        if account.user == user:
+            print(account)
+            return redirect(reverse('profile'))
+    template = 'profiles/profile_setup.html'
+    context = {
+        'user': user,
+        'accountForm': accountForm,
+    }
+
+    return render(request, template, context)
