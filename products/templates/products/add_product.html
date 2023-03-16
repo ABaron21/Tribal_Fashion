@@ -23,7 +23,11 @@
                     {% csrf_token %}
                     {{ form|crispy }}
                     <div class="text-right">
-                        <a href="#" class="text-white btn btn-black btn-slim text-uppercase mb-5">Cancel</a>
+                        {% if cancel_return == 'admin' %}
+                        <a href="{% url 'management_dashboard' %}" class="text-white btn btn-black btn-slim text-uppercase mb-5">Cancel</a>
+                        {% else %}
+                        <a href="{% url 'retailer_dashboard' %}" class="text-white btn btn-black btn-slim text-uppercase mb-5">Cancel</a>
+                        {% endif %}
                         <button type="submit" class="text-white btn btn-black btn-slim text-uppercase mb-5">Add</button>
                     </div>
                 </form>

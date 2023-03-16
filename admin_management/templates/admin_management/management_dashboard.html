@@ -25,8 +25,17 @@
                 <hr class="short-rule">
                 <div class="row">
                     <div class="col-12 col-lg-6">
-                        <div class="text-center">
-                            <a href="{% url 'retailer_requests' %}" class="text-white btn btn-black btn-slim text-uppercase">Retailer Requests</a>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="text-center">
+                                    <a href="{% url 'retailer_requests' %}" class="text-white btn btn-black btn-slim text-uppercase">Retailer Requests</a>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-center">
+                                    <a href="{% url 'add_product' account.id%}" class="text-white btn btn-black btn-slim text-uppercase mb-5">Add Product</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-12 col-lg-6"></div>

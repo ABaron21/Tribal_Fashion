@@ -21,12 +21,14 @@
         </div>
         <div class="row">
             <div class="col-12 col-lg-6">
+                {% if request.retailer_requested %}
                 {% for request in requests %}
                     <div class="row">
                         <h5 class="text-black mt-1">{{ request.user.username }}</h5>
                         <a href="{% url 'approve_retailer' request.id %}" class="text-white btn btn-black btn-slim text-uppercase ml-3">Approve</a>
                     </div>
                 {% endfor %}
+                {% endif %}
             </div>
             <div class="col-12 col-lg-6">
 

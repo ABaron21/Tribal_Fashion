@@ -31,8 +31,10 @@ def add_product(request, retailer_id):
     retailer = get_object_or_404(UserAccount, pk=retailer_id)
     if retailer.user.is_superuser:
         seller = 'Tribal Fashion'
+        cancel_return = 'admin'
     else:
         seller = retailer.user.username
+        cancel_return = 'retailer'
     sku = ''.join(random.choices(string.ascii_uppercase + string.digits, k=16))
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
@@ -48,6 +50,7 @@ def add_product(request, retailer_id):
         'retailer': retailer,
         'form': form,
         'sku': sku,
+        'cancel_return': cancel_return,
     }
 
     return render(request, template, context)

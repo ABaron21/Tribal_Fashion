@@ -107,6 +107,11 @@ select{
     height: 0;
 }
 
+/* Retailer Page */
+.wallet-total{
+    font-size: 20px;
+}
+
 /* Products */
 .seller-name{
     font-size: 12px;

@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="overlay"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <hr>
+            <h2 class="logo-font mt-2 mb-3">{{ retailer.user.username }}'s Dashboard</h2>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <h4 class="text-center">Retailer Actions</h4>
+            <hr class="short-rule">
+            <div class="row">
+                <div class="col-12 col-lg-4">
+                    <div
+                        class="text-center {% if wallet_total %}text-info font-weight-bold{% else %}text-black{% endif %}">
+                        <div class="icon"><i class="fas fa-wallet fa-lg"></i></div>
+                        <p class="mt-1 mb-0 wallet-total">
+                            {% if wallet_total %}
+                            ${{ wallet_total|floatformat:2 }}
+                            {% else %}
+                            £0.00
+                            {% endif %}
+                        </p>
+                        <a href="#" class="btn btn-black btn-slim text-white">My Wallet</a>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-8">
+                    <div class="row mt-3">
+                        <div class="col-6">
+                            <div class="text-center">
+                                <a href="{% url 'profile' %}"
+                                    class="text-white btn btn-black btn-slim text-uppercase mb-5">My Profile</a>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="text-center">
+                                <a href="{% url 'add_product' user.id%}"
+                                    class="text-white btn btn-black btn-slim text-uppercase mb-5">Add Product</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <h4 class="text-center">My Products</h4>
+            <hr class="short-rule">
+            {% for product in products %}
+            {% if product.seller == retailer.user.username %}
+            <div class="row">
+                <div class="col-8 offset-2">
+                    <div class="row">
+                        <div class="col-2 mb-1">
+                            <a href="{% url 'product_details' product.id %}">
+                                {% if product.image %}
+                                <img class="w-100" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                {% else %}
+                                <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="col-7">
+                            <p class="my-0"><strong>{{ product.name }}</strong></p>
+                            <p class="my-0 small text-muted">${{ product.price }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

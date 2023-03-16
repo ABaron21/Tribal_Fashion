@@ -22,8 +22,9 @@ class UserAccount(models.Model):
 
 class RetailAccount(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=50, null=True, blank=True)
-    last_name = models.CharField(max_length=50, null=True, blank=True)
+    first_name = models.CharField(max_length=50, null=False, default='', blank=False)
+    last_name = models.CharField(max_length=50, null=False, default='', blank=False)
+    subscribed = models.BooleanField(null=False, default=False, blank=False)
 
     def __str__(self):
         return self.user.username

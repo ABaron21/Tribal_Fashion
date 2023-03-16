@@ -24,9 +24,9 @@ def retailer_request(request):
         form = RetailerRequestForm(request.POST, instance=account)
         if form.is_valid():
             form.save()
-            account.retailer_requested = True
-            account.save()
-            return redirect(reverse('profile'), args=form)
+        account.retailer_requested = True
+        account.save()
+        return redirect(reverse('profile'), args=form)
 
 
 def profile_setup(request):
@@ -42,7 +42,6 @@ def profile_setup(request):
     accounts = UserAccount.objects.all()
     for account in accounts:
         if account.user == user:
-            print(account)
             return redirect(reverse('profile'))
     template = 'profiles/profile_setup.html'
     context = {

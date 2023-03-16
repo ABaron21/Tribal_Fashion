@@ -62,7 +62,6 @@
             <div class="dropdown-menu border-0" aria-labelledby="user-options">
               {% if request.user.is_authenticated %}
                 {% if request.user.is_superuser %}
-                  <a href="#" class="dropdown-item">Product Management</a>
                   <a href="{% url 'management_dashboard' %}" class="dropdown-item">Admin Management</a>
                 {% endif %}
                 <a href="{% url 'profile_setup' %}" class="dropdown-item">My Profile</a>
@@ -75,7 +74,7 @@
           </li>
           <li class="list-inline-item text-white"><a
               class="{% if grand_total %}text-info font-weight-bold{% else %}text-white{% endif %} nav-link"
-               href="{% if request.user.is_authenticated %}{% url 'view_bag' %}{% else %}{% url 'account_login'%}{% endif %}">
+               href="{% url 'view_bag' %}">
               <div class="text-center">
                 <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                 <p class="my-0">
