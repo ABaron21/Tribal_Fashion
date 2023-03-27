@@ -65,6 +65,11 @@
             <div class="col-12 col-lg-6">
                 <h4 class="text-center">Orders</h4>
                 <hr class="short-rule">
+                {% for order in orders %}
+                {% if order.user_account == account.user.username %}
+                    {{order}}
+                {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>

@@ -3,6 +3,7 @@ from django.db import models
 from django_countries.fields import CountryField
 from django.conf import settings
 from products.models import Product
+from profiles.models import UserAccount
 
 
 class Order(models.Model):
@@ -23,6 +24,7 @@ class Order(models.Model):
                                      decimal_places=2, null=False, default=0)
     overall_total = models.DecimalField(max_digits=10,
                                         decimal_places=2, null=False, default=0)
+    user_account = models.CharField(max_length=254, null=True, blank=True)
 
     def _generate_order_number(self):
         return uuid.uuid4().hex.upper()
@@ -54,7 +56,7 @@ class OrderLineItem(models.Model):
     product_seller = models.CharField(max_length=254, null=False, default='', blank=False, editable=False)
     lineitem_total = models.DecimalField(max_digits=6,
                                          decimal_places=2, null=False, default=0, editable=False)
-    
+
     def save(self, *args, **kwargs):
         self.lineitem_total = self.product.price * self.quantity
         self.product_seller = self.product.seller

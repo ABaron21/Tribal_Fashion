@@ -2,17 +2,22 @@ from django.shortcuts import (render, get_object_or_404, redirect, reverse)
 from django.contrib.auth.models import User
 from .models import UserAccount, RetailAccount
 from .forms import UserAccountForm, RetailerRequestForm
+from checkout.models import Order, OrderLineItem
 
 
 def profile(request):
     account = get_object_or_404(UserAccount, user=request.user)
     accountForm = UserAccountForm(instance=account)
     retailerForm = RetailerRequestForm(instance=account)
+    orders = Order.objects.all()
+    order_items = OrderLineItem.objects.all()
     template = 'profiles/profile.html'
     context = {
         'account': account,
         'accountForm': accountForm,
-        'retailerForm': retailerForm
+        'retailerForm': retailerForm,
+        'orders': orders,
+        'order_items': order_items
     }
 
     return render(request, template, context)

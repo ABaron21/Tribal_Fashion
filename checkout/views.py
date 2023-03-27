@@ -17,6 +17,7 @@ def checkout(request):
     if request.method == 'POST':
         bag = request.session.get('bag', {})
         form_data = {
+            'user_account': request.POST['user_account'],
             'full_name': request.POST['full_name'],
             'phone_number': request.POST['phone_number'],
             'email': request.POST['email'],
@@ -43,6 +44,11 @@ def checkout(request):
                                     args=[order.order_number]))
     else:
         bag = request.session.get('bag', {})
+        user_authenticathed = True if request.user.is_authenticated else False
+        if user_authenticathed:
+            username = request.user.username
+        else:
+            username = 'Anonymous'
         if not bag:
             messages.error(request,
                            'There is nothing in your shopping bag at the \
@@ -58,7 +64,9 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
         )
 
-    order_form = OrderForm()
+    order_form = OrderForm(initial={
+        'user_account': username
+    })
     template = 'checkout/checkout.html'
     context = {
         'form': order_form,
@@ -69,5 +77,7 @@ def checkout(request):
 
 
 def order_success(request, order_number):
+    if 'bag' in request.session:
+        del request.session['bag']
     template = 'checkout/order_success.html'
     return render(request, template)

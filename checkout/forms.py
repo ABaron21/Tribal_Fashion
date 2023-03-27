@@ -8,7 +8,7 @@ class OrderForm(forms.ModelForm):
         fields = ('full_name', 'email', 'phone_number',
                   'street_address1', 'street_address2',
                   'town_or_city', 'postcode', 'county',
-                  'country',)
+                  'country', 'user_account',)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -21,6 +21,7 @@ class OrderForm(forms.ModelForm):
             'postcode': 'Postal Code',
             'town_or_city': 'Town or City',
             'county': 'County',
+            'user_account': 'User',
         }
 
         self.fields['full_name'].widget.attrs['autofocus'] = True
@@ -34,3 +35,4 @@ class OrderForm(forms.ModelForm):
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
             self.fields[field].label = False
         self.fields['country'].widget.attrs['class'] = 'border-black rounded-0'
+        self.fields['user_account'].widget.attrs['hidden'] = True
