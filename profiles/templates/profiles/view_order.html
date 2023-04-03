@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+<div class="overlay"></div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2 class="logo-font mt-2 mb-4">Order <strong>{{order.order_number}}</strong></h2>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="table-responsive">
+                <table class="table table-sm table-borderless">
+                    <thead class="text-black">
+                        <tr>
+                            <th scope="col">Product Information</th>
+                            <th scope="col"></th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                        </tr>
+                    </thead>
+                    {% for item in ordered_items %}
+                    {% if item.order == order %}
+                    <tr>
+                        <td class="p-1 w-25">
+                            {% if item.product.image %}
+                            <img class="bag_img rounded" src="{{ item.product.image.url }}" alt="{{ product.name }}">
+                            {% else %}
+                            <img class="bag_img rounded" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                            {% endif %}
+                        </td>
+                        <td>
+                            <p><strong>{{ item.product.name }}</strong></p>
+                            <p>{{ item.product.sku }}</p>
+                        </td>
+                        <td>
+                            <p>{{ item.product.price }}</p>
+                        </td>
+                        <td>
+                            <p>{{ item.quantity }}</p>
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                    <tr>
+                        <td colspan="5" class="pt-5 text-right">
+                            <h6><strong>Total Products Cost: £{{ order.total_cost|floatformat:2 }}</strong></h6>
+                            <h6>Delivery: £{{ order.delivery_cost|floatformat:2 }}</h6>
+                            <h4 class="mt-4"><strong>Grand Total: £{{ order.overall_total|floatformat:2 }}</strong></h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" class="text-right">
+                            <a href="{% url 'profile' %}" class="btn rounded-0">
+                                <span class="icon">
+                                    <i class="fas fa-chevron-left"></i>
+                                </span>
+                                <span class="text-uppercase">Back</span>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block postloadjs%}
+{{ block.super }}
+{% include 'products/includes/quantity_adjustment.html' %}
+<script type="text/javascript">
+    $('.update-link').click(function (e) {
+        var form = $(this).prev('.quantity-form');
+        form.submit();
+    })
+
+    $('.remove-link').click(function (e) {
+        var csrfToken = "{{csrf_token}}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var url = `/shopping_bag/remove_item/${itemId}`
+        var data = {
+            'csrfmiddlewaretoken': csrfToken
+        }
+
+        $.post(url, data)
+            .done(function () {
+                location.reload();
+            })
+    })
+</script>
+{% endblock %}

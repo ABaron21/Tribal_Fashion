@@ -87,7 +87,7 @@
                             <p>{{ order.overall_total }}</p>
                         </td>
                         <td colspan="5" class="text-right">
-                            <a href="#" class="text-white btn btn-black">
+                            <a href="{% url 'order_view' order_number=order.order_number %}" class="text-white btn btn-black">
                                 <span class="text-uppercase">View Order</span>
                             </a>
                         </td>

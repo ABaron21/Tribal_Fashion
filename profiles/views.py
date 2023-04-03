@@ -20,7 +20,6 @@ def profile(request):
             if item.order == order:
                 items_ordered[order.order_number] = item
 
-    print(items_ordered)
     template = 'profiles/profile.html'
     context = {
         'account': account,
@@ -64,4 +63,15 @@ def profile_setup(request):
         'accountForm': accountForm,
     }
 
+    return render(request, template, context)
+
+
+def order_view(request, order_number):
+    order = get_object_or_404(Order, order_number=order_number)
+    lineitems = OrderLineItem.objects.all()
+    template = 'profiles/view_order.html'
+    context = {
+        'order': order,
+        'ordered_items': lineitems,
+    }
     return render(request, template, context)
