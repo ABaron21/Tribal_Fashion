@@ -65,12 +65,42 @@
             <div class="col-12 col-lg-6">
                 <h4 class="text-center">Orders</h4>
                 <hr class="short-rule">
-                {% for order in orders %}
-                {% if order.user_account == account.user.username %}
-                    {{order}}
-                {% endif %}
-                {% endfor %}
+                {% if orders %}
+            <div class="table-responsive">
+                <table class="table table-sm table-borderless">
+                    {% for order in orders %}
+                    <tr>
+                        {% for key, value in order_items.items %}
+                        {% if key == order.order_number%}
+                        <td class="p-1 w-25">
+                            {% if value.product.image %}
+                            <img class="bag_img_sm" src="{{value.product.image.url}}" alt="">
+                            {% else %}
+                            <img class="bag_img_sm" src="{{MEDIA_URL}}noimage.png" alt="">
+                            {% endif %}
+                        </td>
+                        {% endif %}
+                        {% endfor %}
+                        <td>
+                            <p><strong>{{ order.order_number }}</strong></p>
+                            <p>{{ order.date }}</p>
+                            <p>{{ order.overall_total }}</p>
+                        </td>
+                        <td colspan="5" class="text-right">
+                            <a href="#" class="text-white btn btn-black">
+                                <span class="text-uppercase">View Order</span>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
             </div>
+            {% else %}
+            <h4 class="font-weight-bold ml-2 mb-3">You Haven't Placed Any Orders.</h4>
+            <a href="{% url 'products' %}" class="text-white btn btn-black btn-slim text-uppercase ml-3">
+                <span class="icon"><i class="fas fa-chevron-left"></i></span> Start Shopping</a>
+            </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

@@ -120,6 +120,10 @@ select{
     width: 200px;
     height: 200px;
 }
+.bag_img_sm{
+    width: 150px;
+    height: 150px;
+}
 .update-link,
 .remove-link{
     cursor: pointer;

@@ -10,14 +10,24 @@ def profile(request):
     accountForm = UserAccountForm(instance=account)
     retailerForm = RetailerRequestForm(instance=account)
     orders = Order.objects.all()
+    user_orders = {}
     order_items = OrderLineItem.objects.all()
+    items_ordered = {}
+    for order in orders:
+        if order.user_account == account.user.username:
+            user_orders[order] = order
+        for item in order_items:
+            if item.order == order:
+                items_ordered[order.order_number] = item
+
+    print(items_ordered)
     template = 'profiles/profile.html'
     context = {
         'account': account,
         'accountForm': accountForm,
         'retailerForm': retailerForm,
-        'orders': orders,
-        'order_items': order_items
+        'orders': user_orders,
+        'order_items': items_ordered
     }
 
     return render(request, template, context)
