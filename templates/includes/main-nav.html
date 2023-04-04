@@ -6,8 +6,8 @@
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
                 <a href="" class="dropdown-item">By Price</a>
-                <a href="" class="dropdown-item ">By Rating</a>
-                <a href="" class="dropdown-item ">By Category</a>
+                <a href="{% url 'products'%}?seller=Tribal Fashion" class="dropdown-item ">By Tribal Fashion</a>
+                <a href="{% url 'products'%}?seller=other" class="dropdown-item ">By Public Sellers</a>
                 <a href="{% url 'products' %}" class="dropdown-item">All Products</a>
             </div>
         </li>
@@ -20,7 +20,7 @@
                 <a href="" class="dropdown-item">T-Shirts</a>
                 <a href="" class="dropdown-item">Shirts</a>
                 <a href="" class="dropdown-item">Jumpers</a>
-                <a href="" class="dropdown-item">All Tops</a>
+                <a href="{% url 'products'%}?category=tops" class="dropdown-item">All Tops</a>
             </div>
         </li>
 
@@ -32,7 +32,7 @@
                 <a href="" class="dropdown-item">Jeans</a>
                 <a href="" class="dropdown-item">Trousers</a>
                 <a href="" class="dropdown-item">Joggers</a>
-                <a href="" class="dropdown-item">All Pants</a>
+                <a href="{% url 'products'%}?category=pants" class="dropdown-item">All Pants</a>
             </div>
         </li>
         
@@ -44,7 +44,7 @@
                 <a href="" class="dropdown-item">Casual</a>
                 <a href="" class="dropdown-item">Smart</a>
                 <a href="" class="dropdown-item">Tracksuits</a>
-                <a href="" class="dropdown-item">All Outfits</a>
+                <a href="{% url 'products'%}?category=outfits" class="dropdown-item">All Outfits</a>
             </div>
         </li>
 
