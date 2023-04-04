@@ -135,6 +135,12 @@ select{
     overflow-y: auto;
 }
 
+.order-preview-wrapper{
+    height: 60%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 /* ------------------------------- bootstrap toasts */
 
 .message-container {

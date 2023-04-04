@@ -13,7 +13,11 @@
     <div class="container">
         <div class="row">
             <div class="col text-center">
-                <h1 class="logo-font mt-2 mb-4">Products</h1>
+                {% if search_criteria == None %}
+                    <h1 class="logo-font mt-2 mb-4">Products</h1>
+                {% else %}
+                    <h1 class="logo-font mt-2 mb-4">Search Results for "{{search_criteria}}"</h1>
+                {% endif %}
                 <hr class="short-rule">
             </div>
         </div>

@@ -2,71 +2,75 @@
 {% load static %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
     </div>
+</div>
 {% endblock %}
 
 {% block content %}
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-md-6">
-                <hr>
-                <h2 class="logo-font mt-2 mb-3">{{ account.user.username }}'s Profile</h2>
-                <hr>
-            </div>
+<div class="overlay"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <hr>
+            <h2 class="logo-font mt-2 mb-3">{{ account.user.username }}'s Profile</h2>
+            <hr>
         </div>
-        <div class="row">
-            <div class="col-12 col-lg-6">
-                <h4 class="text-center">Account Details</h4>
-                <hr class="short-rule">
-                <div class="row">
-                    <div class="col-12 col-md-6 mt-2">
-                        <form action="#" method="POST">
-                            {% csrf_token %}
-                            {{ accountForm|crispy }}
-                            <div class="text-left">
-                                <button type="submit" class="text-white btn btn-black btn-slim text-uppercase mb-5">Update Info</button>
-                                <a href="#" class="text-white btn btn-black btn-slim text-uppercase mb-5">Change Account Details</a>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <h4 class="text-center">Account Details</h4>
+            <hr class="short-rule">
+            <div class="row">
+                <div class="col-12 col-md-6 mt-2">
+                    <form action="#" method="POST">
+                        {% csrf_token %}
+                        {{ accountForm|crispy }}
+                        <div class="text-left">
+                            <button type="submit" class="text-white btn btn-black btn-slim text-uppercase mb-5">Update
+                                Info</button>
+                            <a href="#" class="text-white btn btn-black btn-slim text-uppercase mb-5">Change Account
+                                Details</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-12 col-md-6 mt-2">
+                    {% if account.retailer_requested %}
+                    <h5 class="text-center">Your Request Has Been Sent!</h5>
+                    {% elif account.retailer%}
+                    <h5 class="text-center">Retailer Options</h5>
+                    <hr class="short-rule">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="text-center">
+                                <a href="{% url 'retailer_dashboard' %}"
+                                    class="text-white btn btn-black btn-slim text-uppercase mb-5">My Dashboard</a>
                             </div>
-                        </form>
+                        </div>
                     </div>
-                    <div class="col-12 col-md-6 mt-2">
-                        {% if account.retailer_requested %}
-                            <h5 class="text-center">Your Request Has Been Sent!</h5>
-                        {% elif account.retailer%}
-                            <h5 class="text-center">Retailer Options</h5>
-                            <hr class="short-rule">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="text-center">
-                                        <a href="{% url 'retailer_dashboard' %}" class="text-white btn btn-black btn-slim text-uppercase mb-5">My Dashboard</a>
-                                    </div>
-                                </div>
-                            </div>
-                        {% else %}
-                            <form class="retailer-form" action="{% url 'retailer_request' %}" method="POST">
-                                {% csrf_token %}
-                                {{ retailerForm|crispy }}
-                                <h5 class="text-center">Want to become a Retailer?</h5>
-                                <p class="text-center">Have you got clothes you don't wear anymore,</p>
-                                <p class="text-center">want to gain some extra cash for them?</p>
-                                <div class="text-center">
-                                    <button type="submit" class="text-white btn btn-black btn-slim text-uppercase">Apply to Retail</button>
-                                </div>
-                            </form>
-                        {% endif %}
-                    </div>
+                    {% else %}
+                    <form class="retailer-form" action="{% url 'retailer_request' %}" method="POST">
+                        {% csrf_token %}
+                        {{ retailerForm|crispy }}
+                        <h5 class="text-center">Want to become a Retailer?</h5>
+                        <p class="text-center">Have you got clothes you don't wear anymore,</p>
+                        <p class="text-center">want to gain some extra cash for them?</p>
+                        <div class="text-center">
+                            <button type="submit" class="text-white btn btn-black btn-slim text-uppercase">Apply to
+                                Retail</button>
+                        </div>
+                    </form>
+                    {% endif %}
                 </div>
             </div>
-            <div class="col-12 col-lg-6">
-                <h4 class="text-center">Orders</h4>
-                <hr class="short-rule">
-                {% if orders %}
-            <div class="table-responsive">
+        </div>
+        <div class="col-12 col-lg-6">
+            <h4 class="text-center">Orders</h4>
+            <hr class="short-rule">
+            {% if orders %}
+            <div class="table-responsive order-preview-wrapper">
                 <table class="table table-sm table-borderless">
                     {% for order in orders %}
                     <tr>
@@ -87,7 +91,8 @@
                             <p>{{ order.overall_total }}</p>
                         </td>
                         <td colspan="5" class="text-right">
-                            <a href="{% url 'order_view' order_number=order.order_number %}" class="text-white btn btn-black">
+                            <a href="{% url 'order_view' order_number=order.order_number %}"
+                                class="text-white btn btn-black">
                                 <span class="text-uppercase">View Order</span>
                             </a>
                         </td>
@@ -99,8 +104,8 @@
             <h4 class="font-weight-bold ml-2 mb-3">You Haven't Placed Any Orders.</h4>
             <a href="{% url 'products' %}" class="text-white btn btn-black btn-slim text-uppercase ml-3">
                 <span class="icon"><i class="fas fa-chevron-left"></i></span> Start Shopping</a>
-            </div>
-            {% endif %}
         </div>
+        {% endif %}
     </div>
+</div>
 {% endblock %}

@@ -1,6 +1,8 @@
 from django.shortcuts import (render, get_object_or_404, redirect, reverse)
 import string
 import random
+from django.contrib import messages
+from django.db.models import Q
 
 from .models import Product, Category
 from .forms import ProductForm
@@ -11,9 +13,21 @@ from profiles.models import UserAccount
 
 def all_products(request):
     products = Product.objects.all()
+    query = None
+
+    if request.GET:
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(request, 'No search criteria was entered')
+                return redirect(reverse('products'))
+            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            products = products.filter(queries)
+
     template = 'products/products.html'
     context = {
-        'products': products
+        'products': products,
+        'search_criteria': query,
     }
     return render(request, template, context=context)
 

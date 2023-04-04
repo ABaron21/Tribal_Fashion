@@ -29,29 +29,32 @@
                             <th scope="col">Quantity</th>
                         </tr>
                     </thead>
-                    {% for item in ordered_items %}
-                    {% if item.order == order %}
-                    <tr>
-                        <td class="p-1 w-25">
-                            {% if item.product.image %}
-                            <img class="bag_img rounded" src="{{ item.product.image.url }}" alt="{{ product.name }}">
-                            {% else %}
-                            <img class="bag_img rounded" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
-                            {% endif %}
-                        </td>
-                        <td>
-                            <p><strong>{{ item.product.name }}</strong></p>
-                            <p>{{ item.product.sku }}</p>
-                        </td>
-                        <td>
-                            <p>{{ item.product.price }}</p>
-                        </td>
-                        <td>
-                            <p>{{ item.quantity }}</p>
-                        </td>
-                    </tr>
-                    {% endif %}
-                    {% endfor %}
+                    <div class="bag-notification-wrapper">
+                        {% for item in ordered_items %}
+                        {% if item.order == order %}
+                        <tr>
+                            <td class="p-1 w-25">
+                                {% if item.product.image %}
+                                <img class="bag_img rounded" src="{{ item.product.image.url }}"
+                                    alt="{{ product.name }}">
+                                {% else %}
+                                <img class="bag_img rounded" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                                {% endif %}
+                            </td>
+                            <td>
+                                <p><strong>{{ item.product.name }}</strong></p>
+                                <p>{{ item.product.sku }}</p>
+                            </td>
+                            <td>
+                                <p>{{ item.product.price }}</p>
+                            </td>
+                            <td>
+                                <p>{{ item.quantity }}</p>
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
                     <tr>
                         <td colspan="5" class="pt-5 text-right">
                             <h6><strong>Total Products Cost: £{{ order.total_cost|floatformat:2 }}</strong></h6>
