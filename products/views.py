@@ -4,7 +4,7 @@ import random
 from django.contrib import messages
 from django.db.models import Q
 
-from .models import Product, Category
+from .models import Product, Category, Style
 from .forms import ProductForm
 from profiles.models import UserAccount
 
@@ -16,12 +16,18 @@ def all_products(request):
     query = None
     catergory = None
     seller = None
+    style_type = None
 
     if request.GET:
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             products = products.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
+
+        if 'style' in request.GET:
+            style = request.GET['style'].split(',')
+            products = products.filter(style__name__in=style)
+            style_type = style
 
         if 'seller' in request.GET:
             seller = request.GET['seller']
@@ -43,6 +49,7 @@ def all_products(request):
     context = {
         'products': products,
         'search_criteria': query,
+        'style': style_type,
     }
     return render(request, template, context=context)
 

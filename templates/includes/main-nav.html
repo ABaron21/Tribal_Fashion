@@ -17,9 +17,9 @@
                 Tops
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="tops-link">
-                <a href="" class="dropdown-item">T-Shirts</a>
-                <a href="" class="dropdown-item">Shirts</a>
-                <a href="" class="dropdown-item">Jumpers</a>
+                <a href="{% url 'products'%}?style=t-shirt" class="dropdown-item">T-Shirts</a>
+                <a href="{% url 'products'%}?style=shirt" class="dropdown-item">Shirts</a>
+                <a href="{% url 'products'%}?style=jumper" class="dropdown-item">Jumpers</a>
                 <a href="{% url 'products'%}?category=tops" class="dropdown-item">All Tops</a>
             </div>
         </li>
@@ -29,9 +29,9 @@
                 Pants
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="pants-link">
-                <a href="" class="dropdown-item">Jeans</a>
-                <a href="" class="dropdown-item">Trousers</a>
-                <a href="" class="dropdown-item">Joggers</a>
+                <a href="{% url 'products'%}?style=jeans" class="dropdown-item">Jeans</a>
+                <a href="{% url 'products'%}?style=trousers" class="dropdown-item">Trousers</a>
+                <a href="{% url 'products'%}?style=joggers" class="dropdown-item">Joggers</a>
                 <a href="{% url 'products'%}?category=pants" class="dropdown-item">All Pants</a>
             </div>
         </li>
@@ -41,9 +41,9 @@
                 Outfits
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="outfits-link">
-                <a href="" class="dropdown-item">Casual</a>
-                <a href="" class="dropdown-item">Smart</a>
-                <a href="" class="dropdown-item">Tracksuits</a>
+                <a href="{% url 'products'%}?style=casual" class="dropdown-item">Casual</a>
+                <a href="{% url 'products'%}?style=smart" class="dropdown-item">Smart</a>
+                <a href="{% url 'products'%}?style=tracksuit" class="dropdown-item">Tracksuits</a>
                 <a href="{% url 'products'%}?category=outfits" class="dropdown-item">All Outfits</a>
             </div>
         </li>
