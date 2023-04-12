@@ -25,6 +25,7 @@ class RetailAccount(models.Model):
     first_name = models.CharField(max_length=50, null=False, default='', blank=False)
     last_name = models.CharField(max_length=50, null=False, default='', blank=False)
     subscribed = models.BooleanField(null=False, default=False, blank=False)
+    cancel_subscription = models.BooleanField(null=False, default=False, blank=False)
 
     def __str__(self):
         return self.user.username

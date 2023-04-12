@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="overlay"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <hr>
+            <h2 class="logo-font mt-2 mb-3">Subscription Successful!</h2>
+            <hr>
+            <form action="{% url 'premium_success' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-black btn-slim text-white">Return to Dashboard</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

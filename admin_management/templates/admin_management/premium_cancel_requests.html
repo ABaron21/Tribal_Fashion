@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-12 col-md-6">
                 <hr>
-                <h2 class="logo-font mt-2 mb-3">Retailer Requests</h2>
+                <h2 class="logo-font mt-2">Premium Cancelation Requests</h2>
                 <hr>
                 <a href="{% url 'management_dashboard' %}" class="btn rounded-0 mt-0 mb-3">
                     <span class="icon">
@@ -28,10 +28,10 @@
         <div class="row">
             <div class="col-12 col-lg-6">
                 {% for request in requests %}
-                {% if request.retailer_requested %}
+                {% if request.cancel_subscription %}
                     <div class="row">
                         <h5 class="text-black mt-1">{{ request.user.username }}</h5>
-                        <a href="{% url 'approve_retailer' request.id %}" class="text-white btn btn-black btn-slim text-uppercase ml-3">Approve</a>
+                        <a href="{% url 'approve_cancelation' request.id %}" class="text-white btn btn-black btn-slim text-uppercase ml-3">Approve</a>
                     </div>
                     {% endif %}
                 {% endfor %}

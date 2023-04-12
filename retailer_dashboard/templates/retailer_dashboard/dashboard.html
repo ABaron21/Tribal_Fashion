@@ -37,6 +37,26 @@
                         </p>
                         <a href="#" class="btn btn-black btn-slim text-white">My Wallet</a>
                     </div>
+                    {% if retailer.subscribed %}
+                        {% if retailer.cancel_subscription %}
+                            <div class="text-center premium-preview mt-4">
+                                <p class="text-black font-weight-bold mb-3">Your premium cancelation is being processed...</p>
+                            </div>
+                        {% else %}
+                            <div class="text-center premium-preview mt-4">
+                                <form action="{% url 'premium_cancelation' %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-black btn-slim text-white">Cancel Premium</button>
+                                </form>
+                            </div>
+                        {% endif %}
+                    {% else %}
+                        <div class="text-center premium-preview mt-4">
+                            <p class="text-black font-weight-bold mb-3">Don't want to lose the 5% fee?</p>
+                            <p class="text-black font-weight-bold">Subscribe now to recieve all profits from your products!</p>
+                            <a href="https://buy.stripe.com/test_dR6g2Scfp4yd640aEE" class="btn btn-black btn-slim text-white">Go Premium</a>
+                        </div>
+                    {% endif %}
                 </div>
                 <div class="col-12 col-lg-8">
                     <div class="row mt-3">

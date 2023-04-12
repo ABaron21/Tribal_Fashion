@@ -27,3 +27,20 @@ def approve_retailer(request, request_user_id):
     account.retailer_requested = False
     account.save()
     return redirect(reverse('retailer_requests'))
+
+
+def premium_cancel_requests(request):
+    requests = RetailAccount.objects.all()
+    template = 'admin_management/premium_cancel_requests.html'
+    context = {
+        'requests': requests
+    }
+    return render(request, template, context)
+
+
+def approve_cancelation(request, retailer_id):
+    retailer = get_object_or_404(RetailAccount, pk=retailer_id)
+    retailer.subscribed = False
+    retailer.cancel_subscription = False
+    retailer.save()
+    return redirect(reverse('premium_cancel_requests'))
