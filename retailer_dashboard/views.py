@@ -2,6 +2,7 @@ from django.shortcuts import (render, get_list_or_404, get_object_or_404,
                               redirect, reverse)
 from profiles.models import UserAccount, RetailAccount
 from products.models import Product
+from checkout.models import OrderLineItem
 from django.contrib import messages
 
 # Create your views here.
@@ -18,6 +19,18 @@ def retailer_dashboard(request):
         'products': products,
     }
     return render(request, template, context)
+
+
+def remove_product(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    items = OrderLineItem.objects.filter(product=product)
+    if items:
+        messages.error(request, 'An order exists with this item')
+        return redirect(reverse('retailer_dashboard'))
+    else:
+        product.delete()
+        messages.success(request, 'Product deleted successfully!')
+        return redirect(reverse('retailer_dashboard'))
 
 
 def premium_success(request):

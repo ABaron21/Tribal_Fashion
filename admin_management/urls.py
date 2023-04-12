@@ -12,4 +12,6 @@ urlpatterns = [
          name='premium_cancel_requests'),
     path('approve_cancelation/<int:retailer_id>', views.approve_cancelation,
          name='approve_cancelation'),
+    path('remove_tribal_product/<int:product_id>', views.remove_tribal_product,
+         name='remove_tribal_product'),
 ]

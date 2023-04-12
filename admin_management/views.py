@@ -1,15 +1,32 @@
 from django.shortcuts import (render, get_object_or_404, 
                               redirect, reverse)
 from profiles.models import UserAccount, RetailAccount
+from products.models import Product
+from checkout.models import OrderLineItem
+from django.contrib import messages
 
 
 def management_dashboard(request):
     account = get_object_or_404(UserAccount, user=request.user)
+    products = Product.objects.all()
     template = 'admin_management/management_dashboard.html'
     context = {
-        'account': account
+        'account': account,
+        'products': products
     }
     return render(request, template, context=context)
+
+
+def remove_tribal_product(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    items = OrderLineItem.objects.filter(product=product)
+    if items:
+        messages.error(request, 'An order exists with this item')
+        return redirect(reverse('management_dashboard'))
+    else:
+        product.delete()
+        messages.success(request, 'Product deleted successfully!')
+        return redirect(reverse('management_dashboard'))
 
 
 def retailer_requests(request):

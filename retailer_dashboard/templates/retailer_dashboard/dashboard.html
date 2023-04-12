@@ -84,7 +84,7 @@
             <div class="row">
                 <div class="col-8 offset-2">
                     <div class="row">
-                        <div class="col-2 mb-1">
+                        <div class="col-4 mb-1">
                             <a href="{% url 'product_details' product.id %}">
                                 {% if product.image %}
                                 <img class="w-100" src="{{ product.image.url }}" alt="{{ product.name }}">
@@ -93,9 +93,16 @@
                                 {% endif %}
                             </a>
                         </div>
-                        <div class="col-7">
-                            <p class="my-0"><strong>{{ product.name }}</strong></p>
-                            <p class="my-0 small text-muted">${{ product.price }}</p>
+                        <div class="col-8">
+                            <div class="col-8">
+                                <p class="my-0"><strong>{{ product.name }}</strong></p>
+                                <p class="my-0 small text-muted">${{ product.price }}</p>
+                            </div>
+                            <div class="col-4">
+                                <div class="text-center">
+                                    <a href="{% url 'remove_product' product.id %}" class="text-white btn btn-black btn-slim text-uppercase">Remove</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
