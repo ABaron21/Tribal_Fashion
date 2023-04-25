@@ -74,8 +74,8 @@ body{
 
 #all-products-link,
 #tops-link, #pants-link,
-#outfits-link, #specials-link{
-    font-size: 20px;
+#outfits-link{
+    font-size: 24px;
 }
 
 .short-rule{

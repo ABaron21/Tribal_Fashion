@@ -3,6 +3,7 @@ import string
 import random
 from django.contrib import messages
 from django.db.models import Q
+from django.db.models.functions import Lower
 
 from .models import Product, Category, Style
 from .forms import ProductForm
@@ -17,8 +18,22 @@ def all_products(request):
     catergory = None
     seller = None
     style_type = None
+    sort = None
+    direction = None
 
     if request.GET:
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            if sortkey == 'name':
+                sortkey = 'lower_name'
+                products = products.annotate(lower_name=Lower('name'))
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+            products = products.order_by(sortkey)
+
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             products = products.filter(category__name__in=categories)
@@ -45,11 +60,14 @@ def all_products(request):
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
+    current_sorting = f'{sort}_{direction}'
+
     template = 'products/products.html'
     context = {
         'products': products,
         'search_criteria': query,
         'style': style_type,
+        'current_sorting': current_sorting,
     }
     return render(request, template, context=context)
 

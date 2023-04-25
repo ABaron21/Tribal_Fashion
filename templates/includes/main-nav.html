@@ -5,7 +5,7 @@
                 All Products
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="" class="dropdown-item">By Price</a>
+                <a href="{% url 'products'%}?sort=price&direction=asc" class="dropdown-item">By Price</a>
                 <a href="{% url 'products'%}?seller=Tribal Fashion" class="dropdown-item ">By Tribal Fashion</a>
                 <a href="{% url 'products'%}?seller=other" class="dropdown-item ">By Public Sellers</a>
                 <a href="{% url 'products' %}" class="dropdown-item">All Products</a>
@@ -45,18 +45,6 @@
                 <a href="{% url 'products'%}?style=smart" class="dropdown-item">Smart</a>
                 <a href="{% url 'products'%}?style=tracksuit" class="dropdown-item">Tracksuits</a>
                 <a href="{% url 'products'%}?category=outfits" class="dropdown-item">All Outfits</a>
-            </div>
-        </li>
-
-        <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-4" href="#" id="specials-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Special Offers
-            </a>
-            <div class="dropdown-menu border-0" aria-labelledby="specials-link">
-                <a href="" class="dropdown-item">New Arrivals</a>
-                <a href="" class="dropdown-item">Deals</a>
-                <a href="" class="dropdown-item">Clearance</a>
-                <a href="" class="dropdown-item">All Specials</a>
             </div>
         </li>
     </ul>
