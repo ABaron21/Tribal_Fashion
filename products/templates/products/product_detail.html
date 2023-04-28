@@ -35,7 +35,15 @@
                         <h4 class="text-left font-weight-bold">{{ product.name }}</h4>
                         <p class="text-left seller-name">{{ product.seller }}</p>
                         <p class="text-left">{{ product.description }}</p>
-                        <p class="text-left lead mt-3 font-weight-bold">£{{ product.price }}</p>
+                        <p class="text-left lead font-weight-bold">£{{ product.price }}</p>
+                        {% if product.stock_quantity <= 5 %}
+                            {% if product.stock_quantity == 0 %}
+                                <p class="text-danger">No items left in stock</p>
+                                {% else %}
+                                <p class="text-danger">Only {{ product.stock_quantity }} left in stock</p>
+                                <p id="product-stock" hidden>{{product.stock_quantity}}</p>
+                            {% endif %}
+                        {% endif %}
                         <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                             {% csrf_token %}
                             <div class="form-row">
@@ -66,7 +74,11 @@
                                         </span>
                                         <span class="text-uppercase">Keep Shopping</span>
                                     </a>
+                                    {% if product.stock_quantity != 0 %}
                                     <input type="submit" class="btn text-white btn-black rounded-0 text-uppercase mt-2" value="Add to Bag">
+                                    {% else %}
+                                    <input type="submit" class="btn text-white btn-black rounded-0 text-uppercase mt-2" value="Add to Bag" disabled>
+                                    {% endif %}
                                 </div>
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             </div>

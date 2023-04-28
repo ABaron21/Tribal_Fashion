@@ -6,7 +6,13 @@
         var minusDisabled = currentValue < 2;
         var plusDisabled = currentValue > 98;
         $(`#decrease_qty_${itemId}`).prop('disabled', minusDisabled);
-        $(`#increase_qty_${itemId}`).prop('disabled', plusDisabled)
+        $(`#increase_qty_${itemId}`).prop('disabled', plusDisabled);
+    }
+    
+    function checkIncrease(itemId){
+        var currentStock = $('#product-stock').val();
+        var plusDisabled = currentStock <= 1;
+        $(`#increase_qty_${itemId}`).prop('disabled', plusDisabled);
     }
 
     // Ensure proper enabling/disabling of all inputs on page load
@@ -14,6 +20,7 @@
     for(var i = 0; i < allQtyInputs.length; i++){
         var itemId = $(allQtyInputs[i]).data('item_id');
         handleEnableDisable(itemId);
+        checkIncrease(itemId);
     }
     
     // Check enable/disable every time the input is changed
