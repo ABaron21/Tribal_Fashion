@@ -4,7 +4,7 @@ from django.conf import settings
 
 from .forms import OrderForm
 from products.models import Product
-from .models import OrderLineItem
+from .models import OrderLineItem, Order
 from shopping_bag.contexts import shopping_bag_contents
 import stripe
 
@@ -77,7 +77,18 @@ def checkout(request):
 
 
 def order_success(request, order_number):
+    current_order = None
+    orders = Order.objects.all()
+    items_ordered = OrderLineItem.objects.all()
+    for order in orders:
+        if order.order_number == order_number:
+            current_order = order
+
     if 'bag' in request.session:
         del request.session['bag']
     template = 'checkout/order_success.html'
-    return render(request, template)
+    context = {
+        'order': current_order,
+        'items_ordered': items_ordered
+    }
+    return render(request, template, context)

@@ -1,26 +1,60 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
     </div>
+</div>
 {% endblock %}
 {% block content %}
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-md-6">
-                <h2 class="logo-font mt-2 mb-4">Order Success</h2>
-                <hr>
-            </div>
-        </div>
-        <div class="row">
-            
+<div class="overlay"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <h2 class="logo-font mt-2 mb-4">Order Success</h2>
+            <hr>
         </div>
     </div>
+    <div class="row">
+        <div class="col-12 col-md-6 border-black">
+            <h5 class="mt-2 mb-2 font-weight-bold">Order No. {{ order.order_number }}</h5>
+            <hr>
+            <p class="font-weight-bold">Delivering to {{ order.full_name }}</p>
+            <p class="font-weight-bold">
+                Contact: Email - {{ order.email }}, Phone - {{ order.phone_number }}
+            </p>
+            <div class="row">
+            <div class="col-12 col-md-4">
+                <p class="font-weight-bold">Delivery Address:</p>
+                <p>{{order.street_address1}}</p>
+                <p>{{order.postcode}}</p>
+                <p>{{order.town_or_city}}</p>
+                <p>{{order.county}}</p>
+                <p>{{order.country}}</p>
+            </div>
+            <div class="col-12 col-md-6">
+                <p class="font-weight-bold">Order Total:</p>
+                <p class="font-weight-bold">Total Item Cost: £{{order.total_cost}}</p>
+                <p class="font-weight-bold">Delivery Cost: £{{order.delivery_cost}}</p>
+                <p class="font-weight-bold">Overall Cost: £{{order.overall_total}}</p>
+            </div>
+            </div>
+            <p class="font-weight-bold mt-3">Ordered Items:</p>
+            {% for item in items_ordered %}
+            {% if item.order == order%}
+            <hr class="short-rule">
+            <p class="text-center">{{item.product.sku}} <span class="ml-3">{{item.product.name }}</span> <span
+                    class="ml-3">Retailer: {{item.product_seller}}</span></p>
+            <p class="text-center">Single Item Value: £{{item.product.price}} <span class="ml-3">Quantity:
+                    {{item.quantity }}</span> <span class="ml-3">Total: £{{item.lineitem_total}}</span></p>
+            <hr class="short-rule">
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock %}
