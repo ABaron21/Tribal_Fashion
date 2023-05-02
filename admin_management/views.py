@@ -2,7 +2,7 @@ from django.shortcuts import (render, get_object_or_404,
                               redirect, reverse)
 from profiles.models import UserAccount, RetailAccount
 from products.models import Product
-from checkout.models import OrderLineItem
+from checkout.models import OrderLineItem, Order
 from django.contrib import messages
 
 
@@ -61,3 +61,36 @@ def approve_cancelation(request, retailer_id):
     retailer.cancel_subscription = False
     retailer.save()
     return redirect(reverse('premium_cancel_requests'))
+
+
+def order_cancel_requests(request):
+    orders = Order.objects.all()
+    template = 'admin_management/order_cancellations.html'
+    context = {
+        'orders': orders
+    }
+    return render(request, template, context)
+
+
+def order_cancellation(request, order_number):
+    orders = Order.objects.all()
+    items_ordered = OrderLineItem.objects.all()
+    current_request = None
+    order_num = ''
+    for order in orders:
+        if order.order_number == order_number:
+            current_request = order
+
+    if request.method == 'POST':
+        order_num = current_request.order_number
+        current_request.delete()
+        messages.success(request, f'Order with order number {order_num} has been cancelled successfully.')
+        return redirect(reverse('order_cancel_requests'))
+
+    template = 'admin_management/order_cancellation.html'
+    context = {
+        'orders': orders,
+        'current_request': current_request,
+        'items': items_ordered
+    }
+    return render(request, template, context)

@@ -75,3 +75,10 @@ def order_view(request, order_number):
         'ordered_items': lineitems,
     }
     return render(request, template, context)
+
+
+def order_cancel(request, order_number):
+    order = get_object_or_404(Order, order_number=order_number)
+    order.cancel_request = True
+    order.save()
+    return redirect(reverse('profile'))

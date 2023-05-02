@@ -14,4 +14,8 @@ urlpatterns = [
          name='approve_cancelation'),
     path('remove_tribal_product/<int:product_id>', views.remove_tribal_product,
          name='remove_tribal_product'),
+    path('order_cancellations', views.order_cancel_requests,
+         name='order_cancel_requests'),
+    path('order_cancel_review/<order_number>', views.order_cancellation,
+         name='order_cancel_review'),
 ]

@@ -91,10 +91,14 @@
                             <p>{{ order.overall_total }}</p>
                         </td>
                         <td colspan="5" class="text-right">
+                            {% if order.cancel_request %}
+                            <h6 class="text-uppercase text-danger">Cancelled</h6>
+                            {% else %}
                             <a href="{% url 'order_view' order_number=order.order_number %}"
                                 class="text-white btn btn-black">
                                 <span class="text-uppercase">View Order</span>
                             </a>
+                            {% endif %}
                         </td>
                     </tr>
                     {% endfor %}

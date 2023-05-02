@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="overlay"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <hr>
+            <h2 class="logo-font mt-2 mb-3">Order Cancellations</h2>
+            <hr>
+            <a href="{% url 'management_dashboard' %}" class="btn rounded-0 mt-0 mb-3">
+                <span class="icon">
+                    <i class="fas fa-chevron-left"></i>
+                </span>
+                <span class="text-uppercase">Back to Dashboard</span>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            {% for order in orders %}
+            {% if order.cancel_request %}
+            <div class="row">
+                <p class="text-black mt-1">{{ order.order_number }}</p>
+                <a href="{% url 'order_cancel_review' order.order_number %}" class="text-white btn btn-black btn-slim text-uppercase ml-3">View</a>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-10 col-md-4 offset-1 border-black mb-5">
+            <h5 class="mt-2 mb-2 font-weight-bold">Order No. {{ current_request.order_number }}</h5>
+            <hr>
+            <p class="font-weight-bold">User: {{ current_request.user_account }}</p>
+            <p class="font-weight-bold">Name: {{ current_request.full_name }}</p>
+            <p class="font-weight-bold">Email: {{ current_request.email }}</p>
+            <p class="font-weight-bold mt-3">Ordered Items:</p>
+            {% for item in items %}
+            {% if item.order == current_request %}
+            <hr class="short-rule">
+            <p class="text-center">{{item.product.sku}} <span class="ml-3">{{item.product.name }}</span> <span
+                    class="ml-3">Retailer: {{item.product_seller}}</span></p>
+                    <p class="text-center">Single Item Value: £{{item.product.price}} <span class="ml-3">Quantity:
+                    {{item.quantity }}</span> <span class="ml-3">Total: £{{item.lineitem_total}}</span></p>
+            <hr class="short-rule">
+            {% endif %}
+            {% endfor %}
+            <p class="font-weight-bold">Order Total:</p>
+            <p class="font-weight-bold">Total Item Cost: £{{current_request.total_cost}}</p>
+            <p class="font-weight-bold">Delivery Cost: £{{current_request.delivery_cost}}</p>
+            <p class="font-weight-bold">Overall Cost: £{{current_request.overall_total}}</p>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="text-white btn btn-black btn-slim text-uppercase mb-2">Cancel Order</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

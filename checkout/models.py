@@ -26,6 +26,7 @@ class Order(models.Model):
     overall_total = models.DecimalField(max_digits=10,
                                         decimal_places=2, null=False, default=0)
     user_account = models.CharField(max_length=254, null=True, blank=True)
+    cancel_request = models.BooleanField(null=False, default=False)
 
     def _generate_order_number(self):
         return uuid.uuid4().hex.upper()

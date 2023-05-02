@@ -63,7 +63,15 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="5" class="text-right">
+                        <td colspan="2" class="text-left">
+                            <a href="{% url 'order_cancel' order.order_number %}" class="btn rounded-0">
+                                <span class="icon">
+                                    <i class="fas fa-xmark"></i>
+                                </span>
+                                <span class="text-uppercase text-danger">Cancel</span>
+                            </a>
+                        </td>
+                        <td colspan="2" class="text-right">
                             <a href="{% url 'profile' %}" class="btn rounded-0">
                                 <span class="icon">
                                     <i class="fas fa-chevron-left"></i>
