@@ -57,7 +57,7 @@
             <p class="font-weight-bold">Total Item Cost: £{{current_request.total_cost}}</p>
             <p class="font-weight-bold">Delivery Cost: £{{current_request.delivery_cost}}</p>
             <p class="font-weight-bold">Overall Cost: £{{current_request.overall_total}}</p>
-            <form action="" method="POST">
+            <form action="{% url 'order_cancel_review' current_request.order_number %}" method="POST">
                 {% csrf_token %}
                 <button type="submit" class="text-white btn btn-black btn-slim text-uppercase mb-2">Cancel Order</button>
             </form>

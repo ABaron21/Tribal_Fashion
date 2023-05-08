@@ -1,10 +1,12 @@
 from django.shortcuts import (render, get_object_or_404, redirect, reverse)
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from .models import UserAccount, RetailAccount
 from .forms import UserAccountForm, RetailerRequestForm
 from checkout.models import Order, OrderLineItem
 
 
+@login_required
 def profile(request):
     account = get_object_or_404(UserAccount, user=request.user)
     accountForm = UserAccountForm(instance=account)
@@ -32,6 +34,7 @@ def profile(request):
     return render(request, template, context)
 
 
+@login_required
 def retailer_request(request):
     account = get_object_or_404(UserAccount, user=request.user)
     if request.method == 'POST':
@@ -43,6 +46,7 @@ def retailer_request(request):
         return redirect(reverse('profile'), args=form)
 
 
+@login_required
 def profile_setup(request):
     user = get_object_or_404(User, pk=request.user.id)
     accountForm = UserAccountForm(initial={
@@ -66,6 +70,7 @@ def profile_setup(request):
     return render(request, template, context)
 
 
+@login_required
 def order_view(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
     lineitems = OrderLineItem.objects.all()
@@ -77,6 +82,7 @@ def order_view(request, order_number):
     return render(request, template, context)
 
 
+@login_required
 def order_cancel(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
     order.cancel_request = True
