@@ -82,29 +82,37 @@ def product_details(request, product_id):
 
 
 def add_product(request, retailer_id):
-    retailer = get_object_or_404(UserAccount, pk=retailer_id)
-    if retailer.user.is_superuser:
-        seller = 'Tribal Fashion'
-        cancel_return = 'admin'
-    else:
-        seller = retailer.user.username
-        cancel_return = 'retailer'
-    sku = ''.join(random.choices(string.ascii_uppercase + string.digits, k=16))
-    if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect(reverse('add_product', args=[retailer.id]))
-    form = ProductForm(initial={
-        'sku': sku,
-        'seller': seller
-    })
-    template = 'products/add_product.html'
-    context = {
-        'retailer': retailer,
-        'form': form,
-        'sku': sku,
-        'cancel_return': cancel_return,
-    }
+    accounts = UserAccount.objects.all()
+    retailer = None
+    for account in accounts:
+        if account.id == retailer_id:
+            retailer = account
+    if request.user.is_superuser or retailer.retailer:
+        if retailer.user.is_superuser:
+            seller = 'Tribal Fashion'
+            cancel_return = 'admin'
+        else:
+            seller = retailer.user.username
+            cancel_return = 'retailer'
+        sku = ''.join(random.choices(string.ascii_uppercase + string.digits, k=16))
+        if request.method == 'POST':
+            form = ProductForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                return redirect(reverse('add_product', args=[retailer.id]))
+        form = ProductForm(initial={
+            'sku': sku,
+            'seller': seller
+        })
+        template = 'products/add_product.html'
+        context = {
+            'retailer': retailer,
+            'form': form,
+            'sku': sku,
+            'cancel_return': cancel_return,
+        }
 
-    return render(request, template, context)
+        return render(request, template, context)
+    else:
+        messages.error(request, 'You do not have authorization to view this page!')
+        return redirect(reverse('home'))
