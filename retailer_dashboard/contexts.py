@@ -9,7 +9,14 @@ from checkout.models import OrderLineItem
 def retailer_wallet(request):
     user_authenticathed = True if request.user.is_authenticated else False
     if user_authenticathed:
-        user = get_object_or_404(UserAccount, user=request.user)
+        user = None
+        users = UserAccount.objects.all()
+        for account in users:
+            if account.user == request.user:
+                user = account
+            else:
+                context = {}
+                return context
         if user.retailer:
             retailer = get_object_or_404(RetailAccount, user=user.user)
             total = 0

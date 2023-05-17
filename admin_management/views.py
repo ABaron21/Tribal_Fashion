@@ -48,11 +48,20 @@ def retailer_requests(request):
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
 def approve_retailer(request, request_user_id):
-    account = get_object_or_404(UserAccount, pk=request_user_id)
-    account.retailer = True
-    account.retailer_requested = False
-    account.save()
-    return redirect(reverse('retailer_requests'))
+    requests = UserAccount.objects.all()
+    current_request = get_object_or_404(UserAccount, pk=request_user_id)
+    if request.method == 'POST':
+        account = get_object_or_404(UserAccount, pk=request_user_id)
+        account.retailer = True
+        account.retailer_requested = False
+        account.save()
+        return redirect(reverse('retailer_requests'))
+    template = 'admin_management/retailer_request.html'
+    context = {
+        'requests': requests,
+        'current_request': current_request
+    }
+    return render(request, template, context)
 
 
 @login_required
@@ -69,11 +78,19 @@ def premium_cancel_requests(request):
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
 def approve_cancelation(request, retailer_id):
+    requests = RetailAccount.objects.all()
     retailer = get_object_or_404(RetailAccount, pk=retailer_id)
-    retailer.subscribed = False
-    retailer.cancel_subscription = False
-    retailer.save()
-    return redirect(reverse('premium_cancel_requests'))
+    if request.method == 'POST':
+        retailer.subscribed = False
+        retailer.cancel_subscription = False
+        retailer.save()
+        return redirect(reverse('premium_cancel_requests'))
+    template = 'admin_management/premium_cancel_request.html'
+    context = {
+        'retailer': retailer,
+        'requests': requests
+    }
+    return render(request, template, context)
 
 
 @login_required

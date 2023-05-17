@@ -50,7 +50,8 @@ body{
     background: #000;
 }
 .btn-slim{
-    height: 35px;
+    height: 30px;
+    padding-top: 0.2rem;
 }
 
 .dropdown-menu{

@@ -31,13 +31,23 @@
                 {% if request.retailer_requested %}
                     <div class="row">
                         <h5 class="text-black mt-1">{{ request.user.username }}</h5>
-                        <a href="{% url 'approve_retailer' request.id %}" class="text-white btn btn-black btn-slim text-uppercase ml-3">View</a>
+                        <a href="{% url 'approve_retailer' request.id %}" class="text-white btn btn-black btn-slim text-uppercase ml-3">Approve</a>
                     </div>
                     {% endif %}
                 {% endfor %}
             </div>
-            <div class="col-12 col-lg-6">
-
+            <div class="col-10 col-md-4 offset-1 border-black mb-5">
+                <h5 class="mt-2 mb-2 font-weight-bold">User: {{ current_request.user.username }}</h5>
+                <hr>
+                <p class="font-weight-bold">Name: {{ current_request.first_name }} {{ current_request.last_name }}</p>
+                <p class="font-weight-bold">Phone: {{ current_request.phone_number }}</p>
+                <p class="font-weight-bold">Address: {{current_request.address}} {{ current_request.postcode }}</p>
+                <p class="font-weight-bold">Town / City: {{current_request.town_or_city }}</p>
+                <p class="font-weight-bold">Country: {{current_request.country}}</p>
+                <form action="{% url 'approve_retailer' current_request.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="text-white btn btn-black btn-slim text-uppercase mb-2">Approve Request</button>
+                </form>
             </div>
         </div>
     </div>
