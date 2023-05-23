@@ -222,6 +222,30 @@ select {
         margin-bottom: 10px;
     }
 
+    .bag-table{
+        padding: 0 10px;
+    }
+    .bag_img{
+        width: 100px;
+        height: 100px;
+    }
+    .bag-item-name, .bag-item-sku,
+    .bag-item-price, .bag-item-total{
+        font-size: 12px;
+    }
+    .decrease-qty, .increase-qty{
+        visibility: hidden;
+        width: 0;
+        height: 0;
+    }
+    .qty_input{
+        padding: 0;
+        margin-left: 5px;
+    }
+    .checkout-total, .checkout-actions{
+        margin-left: 50px;
+    }
+
     .add-product-container{
         margin-top: 150px;
     }
@@ -237,16 +261,41 @@ select {
     .profile-container{
         margin-top: 150px;
     }
+    .bag_view{
+        margin-top: 150px;
+    }
+    .checkout-view{
+        margin-top: 150px;
+    }
+    .order-review{
+        margin-top: 150px;
+    }
     .orders-section{
         margin-bottom: 50px;
     }
 }
 
-
-/* Slightly larger container on xl screens */
-@media (min-width: 1200px) {
-    .container {
-        max-width: 80%;
+@media (min-width: 768px){
+    .bag-table{
+        padding: 0 15px;
+    }
+    .bag_img{
+        width: 150px;
+        height: 150px;
+    }
+    .bag-item-name, .bag-item-sku,
+    .bag-item-price, .bag-item-total{
+        font-size: 14px;
+    }
+    .quantity-form input{
+        width: 50%;
+    }
+    .qty_input{
+        padding: 5px;
+        margin-left: 0;
+    }
+    .checkout-total, .checkout-actions{
+        margin-left: 300px;
     }
 }
 
@@ -259,7 +308,7 @@ select {
         left: 0;
         z-index: 1030;
     }
-
+    
     #all-products-link,
     #tops-link,
     #pants-link,
@@ -267,23 +316,23 @@ select {
         font-size: 24px;
         color: #000000;
     }
-
+    
     .navbar-bg {
         background-color: white;
     }
-
+    
     .main-search-bar {
         height: 50px;
     }
-
+    
     .header-container {
         padding-top: 200px;
     }
-
+    
     .hero-prompt {
         margin-top: 120px;
     }
-
+    
     .signup-prompt {
         margin-left: 300px;
     }
@@ -293,20 +342,20 @@ select {
         padding-top: 0;
         height: 30px;
     }
-
+    
     .social-link {
         color: white;
         text-align: center;
         font-size: 15px;
         margin-top: 5px;
     }
-
+    
     .copyright-text {
         text-align: center;
         font-size: 11px;
         margin-top: 5px;
     }
-
+    
     .products-area{
         margin-top: 0px;
     }
@@ -318,7 +367,21 @@ select {
         margin-bottom: 50px;
         width: 280px;
     }
-
+    
+    .bag_img{
+        width: 200px;
+        height: 200px;
+    }
+    .bag-item-name, .bag-item-sku,
+    .bag-item-price, .bag-item-total{
+        font-size: 16px;
+    }
+    .decrease-qty, .increase-qty{
+        visibility:visible;
+        width: 26px;
+        height: 38px;
+    }
+    
     .page-top{
         margin-top: 0;
     }
@@ -339,5 +402,21 @@ select {
     }
     .profile-container{
         margin-top: 0;
+    }
+    .bag_view{
+        margin-top: 0;
+    }
+    .checkout-view{
+        margin-top: 0;
+    }
+    .order-review{
+        margin-top: 0;
+    }
+}
+
+/* Slightly larger container on xl screens */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 80%;
     }
 }
