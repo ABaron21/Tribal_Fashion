@@ -176,6 +176,10 @@ select {
 /* -------------------------------- Media Queries */
 @media (min-width: 425px) {
 
+    .nav-link{
+        padding: 0.5rem;
+    }
+
     #all-products-link,
     #tops-link,
     #pants-link,
@@ -282,6 +286,9 @@ select {
 }
 
 @media (min-width: 768px){
+    .nav-link{
+        padding: 0.75rem;
+    }
     .bag-table{
         padding: 0 15px;
     }
@@ -315,6 +322,10 @@ select {
         z-index: 1030;
     }
     
+    .nav-link{
+        padding: 0.5rem 1rem;
+    }
+
     #all-products-link,
     #tops-link,
     #pants-link,
