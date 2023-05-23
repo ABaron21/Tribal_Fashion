@@ -270,6 +270,12 @@ select {
     .order-review{
         margin-top: 150px;
     }
+    .retailer-dashboard{
+        margin-top: 150px;
+    }
+    .premmium-success{
+        margin-top: 150px;
+    }
     .orders-section{
         margin-bottom: 50px;
     }
@@ -411,6 +417,12 @@ select {
     }
     .order-review{
         margin-top: 0;
+    }
+    .retailer-dashboard{
+        margin-top: 150px;
+    }
+    .premmium-success{
+        margin-top: 150px;
     }
 }
 
