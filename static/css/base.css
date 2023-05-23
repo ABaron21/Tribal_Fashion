@@ -1,28 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300;400;600&display=swap');
-body{
+
+body {
     background: url('/media/hero-image.jpg') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 164px);
     font-family: 'Signika Negative', sans-serif;
     font-weight: 300;
 }
-.bg-black{
+
+.bg-black {
     background-color: #000;
-}
-.navbar-bg{
-    background-color: #000;
-}
-.overlay {
-	height: 100%;
-	width: 100%;
-	top: 0;
-	left: 0;
-	position: fixed;
-	background: white;
-	z-index: -1;
 }
 
-.text-black{
+.navbar-bg {
+    background-color: #000;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: white;
+    z-index: -1;
+}
+
+.text-black {
     color: #000;
 }
 
@@ -38,50 +42,55 @@ body{
     width: 1.5rem;
 }
 
-.nav-link{
+.nav-link {
     color: #000;
     text-decoration: None;
 }
 
-.btn-white{
+.btn-white {
     background: white;
 }
-.btn-black{
+
+.btn-black {
     background: #000;
 }
-.btn-slim{
+
+.btn-slim {
     height: 30px;
     padding-top: 0.2rem;
 }
 
-.dropdown-menu{
+.dropdown-menu {
     background-color: #000;
 }
-.dropdown-item{
+
+.dropdown-item {
     background: #000;
     color: white;
 }
 
-.dropdown-item:hover{
+.dropdown-item:hover {
     background: white;
     color: #000;
 }
 
-.navbar-toggler i{
+.navbar-toggler i {
     color: white;
     height: 3rem;
     width: 3rem;
 }
 
 #all-products-link,
-#tops-link, #pants-link,
-#outfits-link{
+#tops-link,
+#pants-link,
+#outfits-link {
     font-size: 24px;
 }
 
-.short-rule{
+.short-rule {
     width: 30%;
 }
+
 select,
 select option {
     color: #000000;
@@ -93,50 +102,55 @@ select option[value=""] {
     color: #aab7c4 !important;
 }
 
-select{
-  height: 40px;
+select {
+    height: 40px;
 }
 
 /* Profile Page */
-.retailer-form label{
+.retailer-form label {
     visibility: hidden;
 }
-#div_id_user label{
+
+#div_id_user label {
     visibility: hidden;
 }
-#div_id_user{
+
+#div_id_user {
     height: 0;
 }
 
 /* Retailer Page */
-.wallet-total{
+.wallet-total {
     font-size: 20px;
 }
 
 /* Products */
-.seller-name{
+.seller-name {
     font-size: 12px;
 }
-.bag_img{
+
+.bag_img {
     width: 200px;
     height: 200px;
 }
-.bag_img_sm{
+
+.bag_img_sm {
     width: 150px;
     height: 150px;
 }
+
 .update-link,
-.remove-link{
+.remove-link {
     cursor: pointer;
 }
 
-.bag-notifaction-wrapper{
+.bag-notifaction-wrapper {
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
 }
 
-.order-preview-wrapper{
+.order-preview-wrapper {
     height: 60%;
     overflow-x: hidden;
     overflow-y: auto;
@@ -160,52 +174,170 @@ select{
 }
 
 /* -------------------------------- Media Queries */
+@media (min-width: 425px) {
+
+    #all-products-link,
+    #tops-link,
+    #pants-link,
+    #outfits-link {
+        font-size: 16px;
+        color: #ffff;
+    }
+
+    .hero-prompt {
+        margin-top: 150px;
+    }
+
+    .copyright-text {
+        font-size: 10px;
+        margin-bottom: 0;
+    }
+
+    .allauth-form{
+        margin-top: 150px;
+    }
+
+    .products-area{
+        margin-top: 50px;
+    }
+
+    .qty_input{
+        padding: 10px;
+    }
+    .increase-qty,.decrease-qty{
+        padding: 6px;
+    }
+
+    .page-top{
+        margin-top: 150px;
+    }
+    .control-text{
+        font-size: 12px;
+    }
+    .site-products{
+        margin-top: 30px;
+    }
+
+    .account-action{
+        margin-bottom: 10px;
+    }
+
+    .add-product-container{
+        margin-top: 150px;
+    }
+    .retailer-requests{
+        margin-top: 150px;
+    }
+    .premium-cancel-requests{
+        margin-top: 150px;
+    }
+    .order-cancellations{
+        margin-top: 150px;
+    }
+    .profile-container{
+        margin-top: 150px;
+    }
+    .orders-section{
+        margin-bottom: 50px;
+    }
+}
+
 
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
     .container {
-      max-width: 80%;
+        max-width: 80%;
     }
-  }
-  
-  /* fixed top navbar only on medium and up */
-  @media (min-width: 992px) {
-      .fixed-top-desktop-only {
-          position: fixed;
-          top: 0;
-          right: 0;
-          left: 0;
-          z-index: 1030;
-      }
-      .navbar-bg{
+}
+
+/* fixed top navbar only on medium and up */
+@media (min-width: 992px) {
+    .fixed-top-desktop-only {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+
+    #all-products-link,
+    #tops-link,
+    #pants-link,
+    #outfits-link {
+        font-size: 24px;
+        color: #000000;
+    }
+
+    .navbar-bg {
         background-color: white;
-      }
-      .main-search-bar{
+    }
+
+    .main-search-bar {
         height: 50px;
-      }
-      .header-container {
-          padding-top: 200px;
-      }
-      .hero-prompt{
-        margin-top: 300px;
-      }
-      .signup-prompt{
+    }
+
+    .header-container {
+        padding-top: 200px;
+    }
+
+    .hero-prompt {
+        margin-top: 120px;
+    }
+
+    .signup-prompt {
         margin-left: 300px;
-      }
-      .page-footer{
+    }
+
+    .page-footer {
         margin-top: 100px;
         padding-top: 0;
         height: 30px;
     }
-    .social-link{
+
+    .social-link {
         color: white;
         text-align: center;
         font-size: 15px;
         margin-top: 5px;
     }
-    .copyright-text{
+
+    .copyright-text {
         text-align: center;
         font-size: 11px;
         margin-top: 5px;
     }
-  }
+
+    .products-area{
+        margin-top: 0px;
+    }
+    .product-price{
+        font-size: 1rem;
+    }
+
+    .change-details{
+        margin-bottom: 50px;
+        width: 280px;
+    }
+
+    .page-top{
+        margin-top: 0;
+    }
+    .add-product-container{
+        margin-top: 0;
+    }
+    .retailer-requests{
+        margin-top: 0;
+    }
+    .premium-cancel-requests{
+        margin-top: 0;
+    }
+    .order-cancellations{
+        margin-top: 0;
+    }
+    .allauth-form{
+        margin-top: 0;
+    }
+    .profile-container{
+        margin-top: 0;
+    }
+}

@@ -66,6 +66,15 @@ def approve_retailer(request, request_user_id):
 
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
+def decline_retailer(request, request_user_id):
+    account = get_object_or_404(UserAccount, pk=request_user_id)
+    account.retailer_requested = False
+    account.save()
+    return redirect(reverse('retailer_requests'))
+
+
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def premium_cancel_requests(request):
     requests = RetailAccount.objects.all()
     template = 'admin_management/premium_cancel_requests.html'

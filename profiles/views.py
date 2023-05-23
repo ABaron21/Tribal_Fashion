@@ -1,4 +1,5 @@
 from django.shortcuts import (render, get_object_or_404, redirect, reverse)
+from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import UserAccount, RetailAccount
@@ -22,6 +23,20 @@ def profile(request):
             if item.order == order:
                 items_ordered[order.order_number] = item
 
+    if request.method == 'POST':
+        account.user = request.user
+        account.first_name = request.POST['first_name']
+        account.last_name = request.POST['last_name']
+        account.phone_number = request.POST['phone_number']
+        account.address = request.POST['address']
+        account.postcode = request.POST['postcode']
+        account.town_or_city = request.POST['town_or_city']
+        account.county = request.POST['county']
+        account.country = request.POST['country']
+        account.save()
+        messages.success(request, 'Account details updated successfully!')
+        return redirect(reverse('profile'))
+
     template = 'profiles/profile.html'
     context = {
         'account': account,
@@ -43,6 +58,7 @@ def retailer_request(request):
             form.save()
         account.retailer_requested = True
         account.save()
+        messages.success(request, 'Your request has been sent!')
         return redirect(reverse('profile'), args=form)
 
 

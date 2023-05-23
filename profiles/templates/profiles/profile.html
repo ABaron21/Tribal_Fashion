@@ -11,7 +11,7 @@
 
 {% block content %}
 <div class="overlay"></div>
-<div class="container">
+<div class="container profile-container">
     <div class="row">
         <div class="col-12 col-md-6">
             <hr>
@@ -25,14 +25,13 @@
             <hr class="short-rule">
             <div class="row">
                 <div class="col-12 col-md-6 mt-2">
-                    <form action="#" method="POST">
+                    <form action="{% url 'profile' %}" method="POST">
                         {% csrf_token %}
                         {{ accountForm|crispy }}
                         <div class="text-left">
-                            <button type="submit" class="text-white btn btn-black btn-slim text-uppercase mb-5">Update
+                            <button type="submit" class="text-white btn btn-black btn-slim text-uppercase account-action">Update
                                 Info</button>
-                            <a href="#" class="text-white btn btn-black btn-slim text-uppercase mb-5">Change Account
-                                Details</a>
+                            <a href="{% url 'account_change_password' %}" class="text-white btn btn-black btn-slim text-uppercase account-action change-details">Change Password</a>
                         </div>
                     </form>
                 </div>
@@ -43,10 +42,10 @@
                     <h5 class="text-center">Retailer Options</h5>
                     <hr class="short-rule">
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-10 offset-1">
                             <div class="text-center">
                                 <a href="{% url 'retailer_dashboard' %}"
-                                    class="text-white btn btn-black btn-slim text-uppercase mb-5">My Dashboard</a>
+                                    class="text-white btn btn-black btn-slim text-uppercase retailer-dashboard-btn mb-5">My Dashboard</a>
                             </div>
                         </div>
                     </div>
@@ -66,7 +65,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-md-6 orders-section">
             <h4 class="text-center">Orders</h4>
             <hr class="short-rule">
             {% if orders %}

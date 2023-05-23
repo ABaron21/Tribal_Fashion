@@ -8,6 +8,8 @@ urlpatterns = [
          name='retailer_requests'),
     path('approve_retailer/<int:request_user_id>', views.approve_retailer,
          name='approve_retailer'),
+    path('decline_retailer/<int:request_user_id>', views.decline_retailer,
+         name='decline_retailer'),
     path('premium_cancel_requests', views.premium_cancel_requests,
          name='premium_cancel_requests'),
     path('approve_cancelation/<int:retailer_id>', views.approve_cancelation,

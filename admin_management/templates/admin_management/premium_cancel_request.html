@@ -11,7 +11,7 @@
 
 {% block content %}
     <div class="overlay"></div>
-    <div class="container">
+    <div class="container premium-cancel-requests">
         <div class="row">
             <div class="col-12 col-md-6">
                 <hr>
@@ -26,16 +26,6 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-lg-6">
-                {% for request in requests %}
-                {% if request.cancel_subscription %}
-                    <div class="row">
-                        <h5 class="text-black mt-1">{{ request.user.username }}</h5>
-                        <a href="{% url 'approve_cancelation' request.id %}" class="text-white btn btn-black btn-slim text-uppercase ml-3">Approve</a>
-                    </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
             <div class="col-10 col-md-4 offset-1 border-black mb-5">
                 <h5 class="mt-2 mb-2 font-weight-bold">Retailer: {{ retailer.user.username }}</h5>
                 <hr>
@@ -44,6 +34,16 @@
                     {% csrf_token %}
                     <button type="submit" class="text-white btn btn-black btn-slim text-uppercase mb-2">Approve Cancelation</button>
                 </form>
+            </div>
+            <div class="col-10 col-md-5 offset-1">
+                {% for request in requests %}
+                {% if request.cancel_subscription %}
+                    <div class="row">
+                        <h5 class="text-black mt-1">{{ request.user.username }}</h5>
+                        <a href="{% url 'approve_cancelation' request.id %}" class="text-white btn btn-black btn-slim text-uppercase ml-3">Approve</a>
+                    </div>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>
