@@ -66,3 +66,19 @@ class OrderLineItem(models.Model):
 
     def __str__(self):
         return f'SKU: {self.product.sku} on order number {self.order.order_number}'
+
+
+class ShippingDetails(models.Model):
+    user = models.OneToOneField(UserAccount, on_delete=models.CASCADE)
+    full_name = models.CharField(max_length=254, null=False, blank=False)
+    phone_number = models.CharField(max_length=20, null=False, blank=False)
+    email = models.EmailField(max_length=254, null=False, blank=False)
+    street_address1 = models.CharField(max_length=254, null=False, blank=False)
+    street_address2 = models.CharField(max_length=254, null=True, blank=True)
+    postcode = models.CharField(max_length=20, null=False, blank=False)
+    town_or_city = models.CharField(max_length=100, null=False, blank=False)
+    county = models.CharField(max_length=100, null=True, blank=True)
+    country = CountryField(blank_label='Country', null=True, blank=False)
+
+    def __str__(self):
+        return self.user.user.username

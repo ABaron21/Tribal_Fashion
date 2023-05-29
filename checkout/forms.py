@@ -1,5 +1,5 @@
 from django import forms
-from .models import Order
+from .models import Order, ShippingDetails
 
 
 class OrderForm(forms.ModelForm):
@@ -36,3 +36,14 @@ class OrderForm(forms.ModelForm):
             self.fields[field].label = False
         self.fields['country'].widget.attrs['class'] = 'border-black rounded-0'
         self.fields['user_account'].widget.attrs['hidden'] = True
+
+
+class ShippingDetailsForm(forms.ModelForm):
+    class Meta:
+        model = ShippingDetails
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs['hidden'] = True
