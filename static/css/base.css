@@ -250,34 +250,16 @@ select {
         margin-left: 50px;
     }
 
-    .add-product-container{
-        margin-top: 150px;
-    }
-    .retailer-requests{
-        margin-top: 150px;
-    }
-    .premium-cancel-requests{
-        margin-top: 150px;
-    }
-    .order-cancellations{
-        margin-top: 150px;
-    }
-    .profile-container{
-        margin-top: 150px;
-    }
-    .bag_view{
-        margin-top: 150px;
-    }
-    .checkout-view{
-        margin-top: 150px;
-    }
-    .order-review{
-        margin-top: 150px;
-    }
-    .retailer-dashboard{
-        margin-top: 150px;
-    }
-    .premmium-success{
+    .add-product-container,
+    .retailer-requests,
+    .premium-cancel-requests,
+    .order-cancellations,
+    .profile-container,
+    .bag_view,
+    .checkout-view,
+    .order-review,
+    .retailer-dashboard,
+    .premium-success{
         margin-top: 150px;
     }
     .orders-section{
@@ -399,41 +381,19 @@ select {
         height: 38px;
     }
     
-    .page-top{
+    .page-top,
+    .add-product-container,
+    .retailer-requests,
+    .premium-cancel-requests,
+    .order-cancellations,
+    .allauth-form,
+    .profile-container,
+    .bag_view,
+    .checkout-view,
+    .order-review,
+    .retailer-dashboard,
+    .premium-success{
         margin-top: 0;
-    }
-    .add-product-container{
-        margin-top: 0;
-    }
-    .retailer-requests{
-        margin-top: 0;
-    }
-    .premium-cancel-requests{
-        margin-top: 0;
-    }
-    .order-cancellations{
-        margin-top: 0;
-    }
-    .allauth-form{
-        margin-top: 0;
-    }
-    .profile-container{
-        margin-top: 0;
-    }
-    .bag_view{
-        margin-top: 0;
-    }
-    .checkout-view{
-        margin-top: 0;
-    }
-    .order-review{
-        margin-top: 0;
-    }
-    .retailer-dashboard{
-        margin-top: 150px;
-    }
-    .premmium-success{
-        margin-top: 150px;
     }
 }
 
