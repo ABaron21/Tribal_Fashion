@@ -53,7 +53,12 @@ def profile(request):
 def retailer_request(request):
     account = get_object_or_404(UserAccount, user=request.user)
     if request.method == 'POST':
-        form = RetailerRequestForm(request.POST, instance=account)
+        form_data = {
+            'user': request.POST['user'],
+            'first_name': request.POST['first_name'],
+            'last_name': request.POST['last_name']
+        }
+        form = RetailerRequestForm(form_data)
         if form.is_valid():
             form.save()
         account.retailer_requested = True
