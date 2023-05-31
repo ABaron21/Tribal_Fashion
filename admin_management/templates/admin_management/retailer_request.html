@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-10 col-md-4 offset-1 border-black mb-5">
+            <div class="col-10 col-md-6 border-black mb-5">
                 <h5 class="mt-2 mb-2 font-weight-bold">User: {{ current_request.user.username }}</h5>
                 <hr>
                 <p class="font-weight-bold">Name: {{ current_request.first_name }} {{ current_request.last_name }}</p>
@@ -40,7 +40,7 @@
                     <a href="{% url 'decline_retailer' current_request.id %}" class="text-white btn btn-black btn-slim text-uppercase mb-2">Decline</a>
                 </form>
             </div>
-            <div class="col-10 col-md-6 offset-1">
+            <div class="col-10 col-md-6 mb-5">
                 {% for request in requests %}
                 {% if request.retailer_requested %}
                     <div class="row">
