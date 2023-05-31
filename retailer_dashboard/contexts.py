@@ -18,7 +18,14 @@ def retailer_wallet(request):
                 context = {}
                 return context
         if user.retailer:
-            retailer = get_object_or_404(RetailAccount, user=user.user)
+            retailer = None
+            retailers = RetailAccount.objects.all()
+            for r in retailers:
+                if r.user == user.user:
+                    retailer = r
+                else:
+                    context = {}
+                    return context
             total = 0
             wallet_fee = 0
             products_sold = OrderLineItem.objects.all()
@@ -43,7 +50,8 @@ def retailer_wallet(request):
 
             return context
         else:
-            return None
+            context = {}
+            return context
     else:
         context = {}
         return context
