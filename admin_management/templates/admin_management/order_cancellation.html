@@ -37,29 +37,29 @@
             {% if item.order == current_request %}
             <hr class="short-rule">
             <p class="text-center">{{item.product.sku}} <span class="ml-3">{{item.product.name }}</span> <span
-                class="ml-3">Retailer: {{item.product_seller}}</span></p>
-                <p class="text-center">Single Item Value: £{{item.product.price}} <span class="ml-3">Quantity:
+                    class="ml-3">Retailer: {{item.product_seller}}</span></p>
+            <p class="text-center">Single Item Value: £{{item.product.price}} <span class="ml-3">Quantity:
                     {{item.quantity }}</span> <span class="ml-3">Total: £{{item.lineitem_total}}</span></p>
-                    <hr class="short-rule">
-                    {% endif %}
-                    {% endfor %}
-                    <p class="font-weight-bold">Order Total:</p>
-                    <p class="font-weight-bold">Total Item Cost: £{{current_request.total_cost}}</p>
-                    <p class="font-weight-bold">Delivery Cost: £{{current_request.delivery_cost}}</p>
-                    <p class="font-weight-bold">Overall Cost: £{{current_request.overall_total}}</p>
-                    <form action="{% url 'order_cancel_review' current_request.order_number %}" method="POST">
-                        {% csrf_token %}
-                        <button type="submit" class="text-white btn btn-black btn-slim text-uppercase mb-2">Cancel Order</button>
-                    </form>
-                </div>
-            </div>
+            <hr class="short-rule">
+            {% endif %}
+            {% endfor %}
+            <p class="font-weight-bold">Order Total:</p>
+            <p class="font-weight-bold">Total Item Cost: £{{current_request.total_cost}}</p>
+            <p class="font-weight-bold">Delivery Cost: £{{current_request.delivery_cost}}</p>
+            <p class="font-weight-bold">Overall Cost: £{{current_request.overall_total}}</p>
+            <form action="{% url 'order_cancel_review' current_request.order_number %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="text-white btn btn-black btn-slim text-uppercase mb-2">Cancel
+                    Order</button>
+            </form>
         </div>
         <div class="col-12 col-md-6 mb-5">
             {% for order in orders %}
             {% if order.cancel_request %}
             <div class="row">
                 <p class="text-black mt-1">{{ order.order_number }}</p>
-                <a href="{% url 'order_cancel_review' order.order_number %}" class="text-white btn btn-black btn-slim text-uppercase ml-3">View</a>
+                <a href="{% url 'order_cancel_review' order.order_number %}"
+                    class="text-white btn btn-black btn-slim text-uppercase ml-3">View</a>
             </div>
             {% endif %}
             {% endfor %}
