@@ -43,8 +43,7 @@ def retailer_wallet(request):
 
             return context
         else:
-            context = {}
-            return context
+            return None
     else:
         context = {}
         return context
