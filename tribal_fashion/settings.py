@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     # Other
     'crispy_forms',
     'crispy_bootstrap5',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -178,6 +179,24 @@ STATICFILES_DIRS = (BASE_DIR / 'static',)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# AWS Settings
+if 'USE_AWS' in os.environ:
+    AWS_STORAGE_BUCKET_NAME = 'tribal-fashion-abaron'
+    AWS_S3_REGION = 'eu-north-1'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_SECRET_ACCESS_KEY}.s3.amazonaws.com'
+
+    # Static & Media locations
+    STATICFILES_STORAGE = 'custom_storage.StaticStorage'
+    STATICFILES_LOCATION = 'static'
+    DEFAULT_FILE_STORAGE = 'custom_storage.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
+
+    # Static & Media url overrides
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
 # Stripe/Checkout
 FREE_DELIVERY_THRESHOLD = 50
