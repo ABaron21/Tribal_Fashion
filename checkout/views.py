@@ -29,7 +29,10 @@ def checkout(request):
             'county': request.POST['county'],
             'country': request.POST['country']
         }
-        save_info = request.POST['save-info']
+        if request.POST['save-info']:
+            save_info = request.POST['save-info']
+        else:
+            save_info = None
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save()
@@ -121,7 +124,7 @@ def order_success(request, order_number, save_info):
         if order.order_number == order_number:
             current_order = order
 
-    if save_info:
+    if save_info is not None:
         print('Saving....')
         shipping_data = {
             'user': user_account,
