@@ -56,7 +56,7 @@
         <div class="col-12 col-md-6 mb-5">
             {% for order in orders %}
             {% if order.cancel_request %}
-            <div class="row">
+            <div class="row cancellation-request">
                 <p class="text-black mt-1">{{ order.order_number }}</p>
                 <a href="{% url 'order_cancel_review' order.order_number %}"
                     class="text-white btn btn-black btn-slim text-uppercase ml-3">View</a>

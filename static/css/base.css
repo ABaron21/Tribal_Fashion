@@ -180,7 +180,7 @@ select {
         padding: 0.5rem;
     }
     .dropdown-item{
-        padding: 4px 18px;
+        padding: 4px 10px;
     }
 
     #all-products-link,
@@ -254,6 +254,9 @@ select {
     }
     .cancellation-number{
         font-size: 18px;
+    }
+    .cancellation-request{
+        margin-left: 5px;
     }
     .order-num{
         font-size: 24px;
