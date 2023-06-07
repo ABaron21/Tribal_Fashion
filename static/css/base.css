@@ -403,6 +403,9 @@ select {
     .cancellation-number{
         font-size: 20px;
     }
+    .current-cancel-request{
+        margin-bottom: 2rem!important;
+    }
     
     .page-top,
     .add-product-container,
