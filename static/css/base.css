@@ -179,6 +179,9 @@ select {
     .nav-link{
         padding: 0.5rem;
     }
+    .dropdown-item{
+        padding: 4px 18px;
+    }
 
     #all-products-link,
     #tops-link,
@@ -249,12 +252,16 @@ select {
     .checkout-total, .checkout-actions{
         margin-left: 50px;
     }
+    .cancellation-number{
+        font-size: 18px;
+    }
 
     .add-product-container,
     .retailer-requests,
     .premium-cancel-requests,
     .order-cancellations,
     .profile-container,
+    .order-view-container,
     .bag_view,
     .checkout-view,
     .order-review,
@@ -306,6 +313,10 @@ select {
     
     .nav-link{
         padding: 0.5rem 1rem;
+    }
+
+    .dropdown-item{
+        padding: 4px 24px;
     }
 
     #all-products-link,
@@ -380,6 +391,9 @@ select {
         width: 30px;
         height: 38px;
     }
+    .cancellation-number{
+        font-size: 20px;
+    }
     
     .page-top,
     .add-product-container,
@@ -388,6 +402,7 @@ select {
     .order-cancellations,
     .allauth-form,
     .profile-container,
+    .order-view-container,
     .bag_view,
     .checkout-view,
     .order-review,

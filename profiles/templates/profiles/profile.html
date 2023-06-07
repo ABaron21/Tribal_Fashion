@@ -77,9 +77,13 @@
                         {% if key == order.order_number%}
                         <td class="p-1 w-25">
                             {% if value.product.image %}
-                            <img class="bag_img_sm" src="{{value.product.image.url}}" alt="">
+                            <a href="{% url 'order_view' order_number=order.order_number %}">
+                                <img class="bag_img_sm" src="{{value.product.image.url}}" alt="product-img">
+                            </a>
                             {% else %}
-                            <img class="bag_img_sm" src="{{MEDIA_URL}}noimage.png" alt="">
+                            <a href="{% url 'order_view' order_number=order.order_number %}">
+                                <img class="bag_img_sm" src="{{MEDIA_URL}}noimage.png" alt="product-img">
+                            </a>
                             {% endif %}
                         </td>
                         {% endif %}

@@ -26,8 +26,8 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-10 col-md-4 offset-1 border-black mb-5">
-            <h5 class="mt-2 mb-2 font-weight-bold">Order No. {{ current_request.order_number }}</h5>
+        <div class="col-12 col-lg-6 offset-1 border-black mb-5">
+            <h5 class="mt-2 mb-2 font-weight-bold cancellation-number">Order No. {{ current_request.order_number }}</h5>
             <hr>
             <p class="font-weight-bold">User: {{ current_request.user_account }}</p>
             <p class="font-weight-bold">Name: {{ current_request.full_name }}</p>
@@ -53,7 +53,7 @@
                     Order</button>
             </form>
         </div>
-        <div class="col-10 col-md-4 offset-1 mb-5">
+        <div class="col-12 col-md-6 offset-1 mb-5">
             {% for order in orders %}
             {% if order.cancel_request %}
             <div class="row">
