@@ -29,8 +29,7 @@ def checkout(request):
             'county': request.POST['county'],
             'country': request.POST['country']
         }
-        if request.POST['save-info']:
-            save_info = request.POST['save-info']
+        save_info = request.POST['save-info']
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save()
