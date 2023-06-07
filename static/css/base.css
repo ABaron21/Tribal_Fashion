@@ -255,6 +255,9 @@ select {
     .cancellation-number{
         font-size: 18px;
     }
+    .order-num{
+        font-size: 24px;
+    }
 
     .add-product-container,
     .retailer-requests,
@@ -298,6 +301,9 @@ select {
     }
     .checkout-total, .checkout-actions{
         margin-left: 300px;
+    }
+    .order-num{
+        font-size: 32px;
     }
 }
 
