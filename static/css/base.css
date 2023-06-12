@@ -308,6 +308,9 @@ select {
     .order-num{
         font-size: 32px;
     }
+    .current-cancel-request{
+        margin-bottom: 2rem!important;
+    }
 }
 
 /* fixed top navbar only on medium and up */
@@ -402,9 +405,6 @@ select {
     }
     .cancellation-number{
         font-size: 20px;
-    }
-    .current-cancel-request{
-        margin-bottom: 2rem!important;
     }
     
     .page-top,
