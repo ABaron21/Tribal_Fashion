@@ -136,8 +136,6 @@ def update_product(request, retailer_id):
             cancel_return = 'retailer'
         product = get_object_or_404(Product, pk=product_id)
         if request.method == 'POST':
-            product.category = request.POST['category']
-            product.style = request.POST['style']
             product.sku = request.POST['sku']
             product.name = request.POST['name']
             product.image_url = request.POST['image_url']

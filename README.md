@@ -1,108 +1,122 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Tribal Fashion
+![responsive-image](docx/images/responsive-view.png)
 
-Welcome A_Baron,
+Click here to vist the [Tribal Fashion](https://tribal-fashion-abaron.herokuapp.com/) website
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+## Project Purpose
+This project will combine together the basic structuring of HTML & CSS with backend properties such as CRUD functionalities to manage data to and from the database as well viewing certain records within the database. Alongside with new additional properties to ascend the project into a full-stack fully function fashion ecommerce website.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+----
+## User Stories
+[Click here](https://docs.google.com/spreadsheets/d/1U8RlZcZcJxxOejVObKqq8daRQ9pqpkSGK3E2BsfQxGE/edit?usp=sharing) to redirect to view the user stories list for Tribal Fashion.
 
-## Gitpod Reminders
+----
+## Features
+* All Users:
+    * Register/Login
+    * View products
+    * Add products to a shopping bag and checkout
+    * Order and pay for products within the shopping bag
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+* Customer Users:
+    * Save delivery/shipping details for their account
+    * Change/Add details for their account
+    * Apply to become a retailer on the website
 
-`python3 -m http.server`
+* Retail Users:
+    * Add their own products to the website
+    * View money made in their account wallet
+    * Update or Delete products they've added
+    * Subscribe to premium to eliminate the fee taken from their wallet
 
-A blue button should appear to click: _Make Public_,
+* Admin Users:
+    * Add products to the website
+    * Update/Change products (i.e Products description/reviews or moving a product to a special offer)
+    * Manage user accounts (e.g giving a user retailer functionalities)
+    * Remove products from the site
 
-Another blue button should appear to click: _Open Browser_.
+----
+## Future Features
+* New Users:
+    * Retrieve a verification email to complete account registration
+* Retail Users:
+    * Withdraw money from their account wallet
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+----
+## Wireframes
+### Home Page
+![home-page-wf](docx/images/wireframes/home-page.png)
+### Products Page
+![products-page-wf](docx/images/wireframes/products-page.png)
+### Register Page
+![register-page-wf](docx/images/wireframes/register-page.png)
+### Login Page
+![login-page-wf](docx/images/wireframes/login-page.png)
+### Profile Page
+![profile-page-wf](docx/images/wireframes/profile-page.png)
+### Checkout Page
+![checkout-page-wf](docx/images/wireframes/checkout-page.png)
 
-A blue button should appear to click: _Make Public_,
+## Database
+With databases there are 2 different types of databases which are relational and non-relational, the main thing that seperates these types are that one incorporates relationship between the tables with the database schema and the other doesn't. For this production PostgreSQL will be the database used which is a relational database and to demonstrate how the relationships look find the ERD diagram below.
 
-Another blue button should appear to click: _Open Browser_.
+ERD (Entity Relationship Diagram)
+![erd-diagram](docx/images/erd-diagram.png)
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+The ERD shown above displays the several models that will be created/used within the production of the website, also shown within the ERD are the relationship types between each model such as One-to-One or One-to-Many that are being used. Looking on the two entities on the left, the User and Retailer entity creating these models within Django can be executed as seen below.
 
-To log into the Heroku toolbelt CLI:
+![profile-models](docx/images/profile-app-models.png)
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+Taking the UserAccount model into consideration and implementing how a user can create a UserAccount record and with the form shown below, a newly registered user will need to complete this form in order to access their profile page for the first time.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+![user-account-form](docx/images/user-account-model-form.png)
 
-------
+## Technology Used
+Figma - Used to build/create the visual outline for the different web pages that the website consists of.
 
-## Release History
+GitPod - Cloud based IDE used to create and build the code for the website.
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+HTML - Programming language used to build the structure of the website/web pages by the use of elements and different components.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+CSS - The styling for the website, used to make the web pages more visually appealing.
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+Bootstrap - An external libary used that aims to focus on the resposiveness of the website, as well as the basic structure and styling for the website.
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+Python - Programming language used to construct the functionality for the website that allows data to be intergrated from the database to the user and reversed based on a users interactions.
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+PostgresSQL - Relational database used to store data that has been added by a user in to different tables and relays data back through various queries.
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+JavaScript - Provides additional functionality but is mainly used to initialize Materialize components such as the modals, datepicker etc.
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+GitHub - A cloud based storage used as the version control for the production by committing and pushing at various stages throughout the development.
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+Stripe - A payment service used for checkout and subscription features.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+ElephantSQL - Used to host the SQL server in the final deployment.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+AWS - Used to store and retrieve static files such as CSS and Media files
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+Heroku - Used to deploy the final development.
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+----
+# Testing
+[Click here](docx/testing.md) to redirect to the Testing file
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+## Screens
+Each web pages has been tested to make sure that they are fully responsive across all screen sizes beginning with mobile devices and increasing upwards to tablets, laptops and finally desktops as it's the largest screen size expected for a browser window.
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+----
+## Deployment
+Two versions on deployment:
+* GitPod - used throughout the development by typing 'python3 -m http.server' in the terminal which gives a prompt to open in a new tab within the browser.
+* Heroku - the final deployment of the website which makes it accesible to the public.
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+----
+## Credits
 
-------
+### External Code
+* Stackoverflow:
+    * [Generating product SKU](https://stackoverflow.com/questions/2257441/random-string-generation-with-upper-case-letters-and-digits)
 
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+### External Pages
+* Stripe Subscription Payment

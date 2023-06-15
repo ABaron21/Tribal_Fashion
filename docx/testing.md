@@ -5,11 +5,132 @@ US = User story (e.g US One = user story one)
 [Click here](https://docs.google.com/spreadsheets/d/1U8RlZcZcJxxOejVObKqq8daRQ9pqpkSGK3E2BsfQxGE/edit?usp=sharing) to redirect to view the user stories list for Tribal Fashion.
 
 ### Navigating & Viewing
+#### Viewing all products:
+1. Locate nav options below the search bar.
+2. Select 'All Products' nav option.
+3. Click 'All Products' in the dropdown menu.
+
+![us-viewing-allproducts](images/user-stories/user-story-viewing-all-products.png)
+#### Viewing product details:
+1. Navigate to the products page.
+2. Find and select a product.
+3. Click either the 'View' button or the product image.
+
+![us-viewing-product-details](images/user-interaction/user-interaction-adding-to-bag.png)
+#### Viewing certain categories:
+1. Locate the center nav options.
+2. Select either Tops, Pants or Outfits.
+3. Click the option at the bottom of the dropdown menu.
+
+![us-viewing-by-category](images/user-stories/user-story-viewing-certain-categories.png)
+#### Viewing your shopping bag total:
+1. Look to the top right of your screen.
+2. Look at the bag icon.
+3. Shopping bag total is underneath the icon.
+
+![us-viewing-shoppingbag-total](images/user-stories/user-story-viewing-shopping-bag-amount.png)
 ### User Accounts
+#### Registering a new account:
+1. Locate the account icon at the top right of the screen.
+2. Select 'Register' from the dropdown menu.
+3. Fill out the form and submit it.
+
+![us-registering](images/user-stories/user-story-registering.png)
+#### Logging into your account:
+1. Locate the account icon at the top right of the screen.
+2. Select 'Login' from the dropdown menu.
+3. Enter your Email/Username and password then click 'Login'.
+
+![us-logging-in](images/user-stories/user-story-logging-in.png)
+#### Viewing your profile:
+1. Locate the account icon at the top right of the screen.
+2. Select 'My Profile' from the dropdown menu.
+3. (*Newly registered user*) Fill out the set up form.
+
+![us-viewing-profile](images/user-stories/user-story-viewing-profile.png)
 ### Sort & Searching
+#### Searching products:
+1. Locate the search bar at the top of the screen.
+2. Enter your search query and either press enter or click the search icon.
+
+![us-searching-products](images/user-stories/user-story-searching-products.png)
+#### Sorting products
+1. Navigate to the products pages.
+2. Find the dropdown menu on the right hand of the page.
+3. Select either of the options to sort the products by name/price etc.
+
+![us-sorting-products](images/user-stories/user-story-sorting-products.png)
 ### Checkout & Purchasing
+#### Checkout & purchase the items in your shopping bag:
+1. Locate the bag icon on the top right of your screen and click.
+2. View the items in your shopping bag and make adjustments if you want to.
+3. Click the 'Secure Checkout' button.
+4. Fill out the shipping form & enter card payment details.
+5. Click the 'Complete Order' button.
+
+![us-checkingout](images/user-stories/user-story-purchasing-order.png)
+#### View the orders I've placed:
+1. Locate the account icon at the top right of the screen.
+2. Select 'My Profile' from the dropdown menu.
+3. Find the orders you've placed on the right side of the screen.
+(Mobile Users) Orders will be underneath account details.
+
+![us-viewing-my-orders](images/user-stories/user-story-orders-placed.png)
 ### Products
+#### Adding products as an admin user:
+1. Login with admin credentials. 
+2. Locate the account icon at the top right of the screen.
+3. Click 'Admin Management'.
+4. Click 'Add Product' in the admin controls section.
+5. Fill out the product form and submit it.
+
+![us-adding-products-admin](images/user-stories/user-story-adding-products-admin.png)
+#### Updating products as an admin user:
+1. Login with admin credentials. 
+2. Locate the account icon at the top right of the screen.
+3. Click 'Admin Management'.
+4. Click the image of the product you want to update with the Products section on the right of the page.
+5. Fill out the product form and submit it.
+
+![us-updating-products](images/user-stories/user-story-updating-products-admin.png)
+#### Adding products as an retailer user:
+1. Login into your account. 
+2. Locate the account icon at the top right of the screen.
+3. Click 'My Profile'.
+4. Click 'My Dashboard'.
+5. Click 'Add Product'.
+6. Fill out the product form and submit it.
+
+![us-adding-prod-retailer-dashboard](images/user-stories/user-story-adding-products-retailer-dashboard.png)
+
+![us-adding-products-retailer](images/user-stories/user-story-adding-products-retailer.png)
 ### Selling
+#### Viewing my products:
+1. Login into your account. 
+2. Locate the account icon at the top right of the screen.
+3. Click 'My Profile'.
+4. Click 'My Dashboard'.
+5. Find your products on the right of the page.
+
+![us-viewing-my-products](images/user-stories/user-story-viewing-my-products-retailer.png)
+#### Viewing my retailers wallet:
+1. Login into your account. 
+2. Locate the account icon at the top right of the screen.
+3. Click 'My Profile'.
+4. Click 'My Dashboard'.
+5. Find your wallet balence on the left side of the page.
+
+![us-viewing-my-wallet-amount](images/user-stories/user-story-viewing-retailer-wallet.png)
+#### Subscribing to retailer premium:
+1. Login into your account. 
+2. Locate the account icon at the top right of the screen.
+3. Click 'My Profile'.
+4. Click 'My Dashboard'.
+5. Click 'Subscribe' on the left hand side of the page.
+6. Fill out the payment form and submit it.
+
+![us-subscribing-retailer-premium](images/user-stories/user-story-subscribing-to-premium.png)
+
 ----
 ## User Interaction
 ### Adding a Product To Your Shopping Bag
@@ -26,6 +147,11 @@ After creating the record in the custom UserAccount model with the profile setup
 ![cancelling-an-order](images/user-interaction/user-interaction-cancelling-an-order.png)
 
 If a user wants to cancel their order and they have an account linked to the order, if they sign in to the account and then view the order through their profile page. They can click the 'Cancel' button on the bottom left of the page and the request to cancel the order will be sent to the admin users.
+
+### Changing Account Password
+![changing-password](images/user-interaction/user-interaction-changing-password.png)
+
+If a user wants to change their password, they can navigate to their profile page and at the bottom of the page underneath the form with their account details they can click the 'Change Password' button. Enter in their old password and then enter their new password twice submit it and their password is now changed.
 
 ----
 ## Defensiveness
