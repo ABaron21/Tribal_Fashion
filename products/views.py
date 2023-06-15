@@ -118,9 +118,12 @@ def add_product(request, retailer_id):
         return redirect(reverse('home'))
 
 
-def update_product(request, retailer_id, product_id):
+def update_product(request, retailer_id):
     accounts = UserAccount.objects.all()
     retailer = None
+    product_id = 0
+    if 'product' in request.GET:
+        product_id = request.GET['product']
     for account in accounts:
         if account.id == retailer_id:
             retailer = account
