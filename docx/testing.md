@@ -11,6 +11,23 @@ US = User story (e.g US One = user story one)
 ### Products
 ### Selling
 ----
+## User Interaction
+### Adding a Product To Your Shopping Bag
+![adding-product-to-bag](images/user-interaction/user-interaction-adding-to-bag.png)
+
+After clicking to view a product in order to add the item to your shopping bag just set the quantity using either the -/+ icons or manually enter the amount the click 'Add To Bag'
+
+### Applying to Become a Retailer
+![applying-to-become-a-retailer](images/user-interaction/user-interaction-applying-to-retail.png)
+
+After creating the record in the custom UserAccount model with the profile setup page, when a user views their profile page they will be prompted with the option to apply to become a retailer. All they need to do is click the 'Apply To Retail' button and their request will be sent to the admin users for review.
+
+### Cancelling an Order
+![cancelling-an-order](images/user-interaction/user-interaction-cancelling-an-order.png)
+
+If a user wants to cancel their order and they have an account linked to the order, if they sign in to the account and then view the order through their profile page. They can click the 'Cancel' button on the bottom left of the page and the request to cancel the order will be sent to the admin users.
+
+----
 ## Defensiveness
 ### Attempting to view profile without being logged in
 ![defensive-one](images/defensiveness/defensive-one.png)
@@ -22,12 +39,6 @@ US = User story (e.g US One = user story one)
 ### Attempting to add products without being an Admin or Retailer user
 ![defensive-three](images/defensiveness/defensive-three.png)
 
-
-----
-## User Interaction
-Adding product to bag
-Applying to become a retailer
-cancelling an order
 
 
 ----

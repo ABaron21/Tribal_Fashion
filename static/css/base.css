@@ -400,7 +400,7 @@ select {
     }
     .decrease-qty, .increase-qty{
         visibility:visible;
-        width: 30px;
+        width: 36px;
         height: 38px;
     }
     .cancellation-number{
