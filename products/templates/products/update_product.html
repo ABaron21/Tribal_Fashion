@@ -19,7 +19,7 @@
         </div>
         <div class="row">
             <div class="col-12 col-md-6">
-                <form action="{% url 'update_product' retailer.id & product.id %}" method="POST" enctype="multipart/form-data">
+                <form action="{% url 'update_product' retailer.id %}?product={{product.id}}" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form|crispy }}
                     <div class="text-right">
