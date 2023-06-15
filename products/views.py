@@ -147,7 +147,10 @@ def update_product(request, retailer_id):
             product.stock_quantity = request.POST['stock_quantity']
             product.seller = request.POST['seller']
             product.save()
-            return redirect(reverse('update_product', args=[retailer.id, product_id]))
+            if seller == "Tribal Fashion":
+                return redirect(reverse('management_dashboard'))
+            else:
+                return redirect(reverse('retailer_dashboard'))
         form = ProductForm(initial={
             'category': product.category,
             'style': product.style,
