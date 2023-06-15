@@ -57,3 +57,20 @@ Extended CSS for Checkout Page
 
 ----
 ## Bugs
+### Profile Page Bug
+![profile-view-bug](images/bugs/profile-view-bug.png)
+
+As seen above during development whenever attempting to view the profile the site kept throwing a 404 error, the reasoning for this was because the profile page retrieves a users info from the custom UserAccount model and at the time there was no way for a user to create their record within the custom model.
+
+So the addition was made that if a newly registered user was to go to their profile page the nav link will direct to the form shown below for the user to create a record for the custom model but if the user has already created a record then it'll just go straight to their profile page.
+
+![user-account-form](images/user-account-model-form.png)
+
+### Checkout Bug
+![checkout-bug](images/bugs/checkout-bug.png)
+
+The bug above occured when a logged in user is attempting to checkout and purchasing products without the save info box checked, the reason for this bug occurance was because with the checkout view code it tries to set a variable that will be passed to the order success view to check if the user wanted to save their shipping/delievery information but if the option isn't checked then there is no save info value within the 'request.POST' dictionary.
+
+The change to the code that resolved the issue is shown below and all that is happening is that it is checking to see if there is a 'save-info' key within the 'request.POST' dictionary and if there is then it's setting the variable to the value else it'll set the variable to a None value.
+
+![checkout-bug-fix](images/bugs/checkout-bug-fix.png)
