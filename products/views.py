@@ -116,3 +116,56 @@ def add_product(request, retailer_id):
     else:
         messages.error(request, 'You do not have authorization to view this page!')
         return redirect(reverse('home'))
+
+
+def update_product(request, retailer_id, product_id):
+    accounts = UserAccount.objects.all()
+    retailer = None
+    for account in accounts:
+        if account.id == retailer_id:
+            retailer = account
+    if request.user.is_superuser or retailer.retailer:
+        if retailer.user.is_superuser:
+            seller = 'Tribal Fashion'
+            cancel_return = 'admin'
+        else:
+            seller = retailer.user.username
+            cancel_return = 'retailer'
+        product = get_object_or_404(Product, pk=product_id)
+        if request.method == 'POST':
+            product.category = request.POST['category']
+            product.style = request.POST['style']
+            product.sku = request.POST['sku']
+            product.name = request.POST['name']
+            product.image_url = request.POST['image_url']
+            product.image = request.POST['image']
+            product.description = request.POST['description']
+            product.price = request.POST['price']
+            product.stock_quantity = request.POST['stock_quantity']
+            product.seller = request.POST['seller']
+            product.save()
+            return redirect(reverse('update_product', args=[retailer.id, product_id]))
+        form = ProductForm(initial={
+            'category': product.category,
+            'style': product.style,
+            'sku': product.sku,
+            'name': product.name,
+            'image_url': product.image_url,
+            'image': product.image,
+            'description': product.description,
+            'price': product.price,
+            'stock_quantity': product.stock_quantity,
+            'seller': product.seller,
+        })
+        template = 'products/update_product.html'
+        context = {
+            'retailer': retailer,
+            'form': form,
+            'cancel_return': cancel_return,
+            'product': product,
+        }
+
+        return render(request, template, context)
+    else:
+        messages.error(request, 'You do not have authorization to view this page!')
+        return redirect(reverse('home'))
