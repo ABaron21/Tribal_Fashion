@@ -82,6 +82,8 @@ CSS - The styling for the website, used to make the web pages more visually appe
 
 Bootstrap - An external libary used that aims to focus on the resposiveness of the website, as well as the basic structure and styling for the website.
 
+Django - A fullstack framework used to structure the web application by compiling seperate apps containing templates, views, urls, models etc for different parts of the site.
+
 Python - Programming language used to construct the functionality for the website that allows data to be intergrated from the database to the user and reversed based on a users interactions.
 
 PostgresSQL - Relational database used to store data that has been added by a user in to different tables and relays data back through various queries.
@@ -108,7 +110,7 @@ Each web pages has been tested to make sure that they are fully responsive acros
 ----
 ## Deployment
 Two versions on deployment:
-* GitPod - used throughout the development by typing 'python3 -m http.server' in the terminal which gives a prompt to open in a new tab within the browser.
+* GitPod - used throughout the development by typing 'python3 manage.py runserver' in the terminal which gives a prompt to open in a new tab within the browser.
 * Heroku - the final deployment of the website which makes it accesible to the public.
 
 ----
