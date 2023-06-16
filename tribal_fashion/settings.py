@@ -25,7 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-c74o4g(_+%-(naaypw4yrb)qd8*15oka%ax17b^2e&7v95fx3='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG')
+if 'DEBUG' in os.environ:
+    DEBUG = True
+else:
+    DEBUG = False
 ALLOWED_HOSTS = ['tribal-fashion-abaron.herokuapp.com', 'localhost',
                  '8000-abaron21-tribalfashion-u2lmkf3r2g3.ws-eu98.gitpod.io']
 
