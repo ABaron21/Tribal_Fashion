@@ -42,12 +42,14 @@ form.addEventListener('submit', function(ev) {
     card.update({ 'disabled': true});
     $('#submit-button').attr('disabled', true);
 
-    var saveInfo = Boolean($('#id-save-info').attr(checked));
-    var csrfToken = $('input[name="csrfmiddlewaretoken"]').val()
+    var saveInfo = Boolean($('#id-save-info').attr('checked'));
+    var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+    var userAccount = $.trim(form.user_account.value);
     var postData = {
         'csrfmiddlewaretoken': csrfToken,
         'client_secret': clientSecret,
         'save_info': saveInfo,
+        'user_account': userAccount,
     };
     var url = '/checkout/cache_checkout_data/'
 
@@ -56,7 +58,6 @@ form.addEventListener('submit', function(ev) {
                 payment_method: {
                     card: card,
                     billing_details: {
-                        user: $.trim(form.user_account,value),
                         name: $.trim(form.full_name.value),
                         phone: $.trim(form.phone_number.value),
                         email: $.trim(form.email.value),

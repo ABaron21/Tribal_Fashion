@@ -41,6 +41,7 @@ class Stripe_Web_Handler:
         pid = intent.id
         bag = intent.metadata.bag
         save_info = intent.metadata.save_info
+        user_account = intent.metadata.user_account
 
         stripe_charge = stripe.Charge.retrieve(
             intent.latest_charge
@@ -58,7 +59,6 @@ class Stripe_Web_Handler:
         while exist_checks <= 5:
             try:
                 order = Order.object.get(
-                    user_account_iexact=billing_details.user,
                     full_name_iexact=shipping_details.name,
                     email_iexact=billing_details.email,
                     phone_number_iexact=shipping_details.phone,
@@ -86,7 +86,6 @@ class Stripe_Web_Handler:
             order = None
             try:
                 order = Order.object.create(
-                    user_account=billing_details.user,
                     full_name=shipping_details.name,
                     email=billing_details.email,
                     phone_number=shipping_details.phone,
@@ -96,7 +95,8 @@ class Stripe_Web_Handler:
                     street_address1=shipping_details.address.line1,
                     street_address2=shipping_details.address.line2,
                     county=shipping_details.address.state,
-                    stripe_pid=pid
+                    stripe_pid=pid,
+                    user_account=user_account
                 )
                 for item_id, item_data in json.loads(bag).items():
                     product = Product.objects.get(id=item_id)
