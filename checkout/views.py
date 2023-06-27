@@ -1,8 +1,7 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, HttpResponse
 from django.contrib import messages
 from django.conf import settings
-from django.core.mail import send_mail
-from django.template.loader import render_to_string
+from django.views.decorators.http import require_POST
 
 from .forms import OrderForm, ShippingDetailsForm
 from products.models import Product
@@ -10,8 +9,25 @@ from profiles.models import UserAccount
 from .models import OrderLineItem, Order, ShippingDetails
 from shopping_bag.contexts import shopping_bag_contents
 import stripe
+import json
 
 # Create your views here.
+
+@require_POST
+def cache_checkout_data(request):
+    try:
+        pid = request.get('client_secret').split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(pid, metadata= {
+            'bag': json.dumps(request.session.get('bag', {})),
+            'save_info': request.POST.get('save-info'),
+            'username': request.user,
+        })
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, 'Sorry your payment cannot be processed right now\
+            please try again later.')
+        return HttpResponse(content=e, status=400)
 
 
 def checkout(request):
@@ -37,7 +53,10 @@ def checkout(request):
             save_info = None
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            pid = request.get('client_secret').split('_secret')[0]
+            order.stripe_pid = pid
+            order.save()
             for item_id, item_data in bag.items():
                 product = Product.objects.get(id=item_id)
                 order_line_item = OrderLineItem(
@@ -127,20 +146,6 @@ def order_success(request, order_number, save_info):
     for order in orders:
         if order.order_number == order_number:
             current_order = order
-
-    customer_email = current_order.email
-    subject = render_to_string(
-        'checkout/order_confirmation_email/order_confirmation_subject.txt',
-        {'order': current_order})
-    body = render_to_string(
-        'checkout/order_confirmation_email/order_confirmation_body.txt',
-        {'order': current_order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
-    send_mail(
-        subject,
-        body,
-        settings.DEFAULT_FROM_EMAIL,
-        [customer_email]
-    )
 
     if save_info is not None:
         shipping_data = {

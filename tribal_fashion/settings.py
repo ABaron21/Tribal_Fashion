@@ -21,7 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
+# SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'django-insecure-c74o4g(_+%-(naaypw4yrb)qd8*15oka%ax17b^2e&7v95fx3='
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if 'DEBUG' in os.environ:
@@ -129,7 +130,7 @@ WSGI_APPLICATION = 'tribal_fashion.wsgi.application'
 
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
-        'default': dj_database_url.parse('postgres://fosjxica:Fb0vb63kvXiA_yt3hFpGVsQONU6vrLuV@lucky.db.elephantsql.com/fosjxica')
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
 else:
     DATABASES = {
