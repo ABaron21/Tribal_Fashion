@@ -131,17 +131,16 @@ def order_success(request, order_number, save_info):
     customer_email = current_order.email
     subject = render_to_string(
         'checkout/order_confirmation_email/order_confirmation_subject.txt',
-        {'order' : current_order})
+        {'order': current_order})
     body = render_to_string(
         'checkout/order_confirmation_email/order_confirmation_body.txt',
-        {'order' : current_order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+        {'order': current_order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
     send_mail(
         subject,
         body,
         settings.DEFAULT_FROM_EMAIL,
         [customer_email]
     )
-    
 
     if save_info is not None:
         shipping_data = {
