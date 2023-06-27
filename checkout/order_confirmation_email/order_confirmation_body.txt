@@ -1,0 +1,26 @@
+Hello {{order.full_name}},
+
+This is confirming your order placed with Tribal Fashion, please find your order details below:
+
+Order Number: {{order.order_number}}
+Date Placed: {{order.date}}
+
+Total Order Cost: {{order.total_cost}}
+Delivery Cost: {{order.delivery_cost}}
+Overall Order Cost: {{order.overall_total}}
+
+Your order will be delivered to:
+
+Address: {{order.street_address1}}
+Town/City: {{order.town_or_city}}
+Postcode: {{order.postcode}}
+Country: {{order.country}}
+
+The phone number we have for you on file is {{order.phone_number}}, if your number has changed please update it through your profile or contact us.
+
+If you have any issues or queries please contact us at {{contact_email}}
+
+Thank you for ordering with us!
+
+Sincerly,
+Tribal Fashion

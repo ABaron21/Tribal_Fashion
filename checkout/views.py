@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.conf import settings
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 
 from .forms import OrderForm, ShippingDetailsForm
 from products.models import Product
@@ -45,6 +47,8 @@ def checkout(request):
                     product_seller=product.seller,
                 )
                 order_line_item.save()
+            messages.success(request, 'Your order has been placed,\
+                a confirmation email will be sent to you shortly!')
             return redirect(reverse('order_success',
                                     args=[order.order_number, save_info]))
     else:
@@ -124,8 +128,22 @@ def order_success(request, order_number, save_info):
         if order.order_number == order_number:
             current_order = order
 
+    customer_email = current_order.email
+    subject = render_to_string(
+        'checkout/order_confirmation_email/order_confirmation_subject.txt',
+        {'order' : current_order})
+    body = render_to_string(
+        'checkout/order_confirmation_email/order_confirmation_body.txt',
+        {'order' : current_order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+    send_mail(
+        subject,
+        body,
+        settings.DEFAULT_FROM_EMAIL,
+        [customer_email]
+    )
+    
+
     if save_info is not None:
-        print('Saving....')
         shipping_data = {
             'user': user_account,
             'full_name': current_order.full_name,

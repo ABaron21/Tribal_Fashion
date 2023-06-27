@@ -1,0 +1,1 @@
+Tribal Fashion Order Confirmation, Order No {{order.order_number}}

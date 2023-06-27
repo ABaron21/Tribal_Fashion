@@ -99,6 +99,7 @@ def add_product(request, retailer_id):
             form = ProductForm(request.POST, request.FILES)
             if form.is_valid():
                 form.save()
+                messages.success(request, 'Product Added Successfully!')
                 return redirect(reverse('add_product', args=[retailer.id]))
         form = ProductForm(initial={
             'sku': sku,
@@ -146,8 +147,12 @@ def update_product(request, retailer_id):
             product.seller = request.POST['seller']
             product.save()
             if seller == "Tribal Fashion":
+                messages.success(request, f'Product {product.name} with SKU: {product.sku}\
+                    has been updated successfully!')
                 return redirect(reverse('management_dashboard'))
             else:
+                messages.success(request, f'Product {product.name} with SKU: {product.sku}\
+                    has been updated successfully!')
                 return redirect(reverse('retailer_dashboard'))
         form = ProductForm(initial={
             'category': product.category,
