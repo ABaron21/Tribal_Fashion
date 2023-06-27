@@ -16,13 +16,13 @@ class Stripe_Web_Handler:
         self.request = request
 
     def _send_order_confirmation(self, order):
-        customer_email = current_order.email
+        customer_email = order.email
         subject = render_to_string(
             'checkout/order_confirmation_email/order_confirmation_subject.txt',
-            {'order': current_order})
+            {'order': order})
         body = render_to_string(
             'checkout/order_confirmation_email/order_confirmation_body.txt',
-            {'order': current_order,
+            {'order': order,
              'contact_email': settings.DEFAULT_FROM_EMAIL})
         send_mail(
             subject,
