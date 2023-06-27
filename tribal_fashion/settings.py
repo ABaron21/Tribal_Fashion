@@ -215,6 +215,7 @@ STRIPE_CURRENCY = 'gbp'
 STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 STRIPE_SUBSCRIPTION_ID = os.environ.get('STRIPE_SUBSCRIPTION_ID')
+WH_SECRET_KEY = os.environ.get('WH_SECRET_KEY')
 
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

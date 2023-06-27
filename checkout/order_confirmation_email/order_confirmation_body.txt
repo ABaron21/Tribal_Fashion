@@ -5,9 +5,9 @@ This is confirming your order placed with Tribal Fashion, please find your order
 Order Number: {{order.order_number}}
 Date Placed: {{order.date}}
 
-Total Order Cost: {{order.total_cost}}
-Delivery Cost: {{order.delivery_cost}}
-Overall Order Cost: {{order.overall_total}}
+Total Order Cost: £{{order.total_cost}}
+Delivery Cost: £{{order.delivery_cost}}
+Overall Order Cost: £{{order.overall_total}}
 
 Your order will be delivered to:
 
