@@ -39,6 +39,7 @@
                         {% if product.stock_quantity <= 5 %}
                             {% if product.stock_quantity == 0 %}
                                 <p class="text-danger">No items left in stock</p>
+                                <p id="product-stock" hidden>{{product.stock_quantity}}</p>
                                 {% else %}
                                 <p class="text-danger">Only {{ product.stock_quantity }} left in stock</p>
                                 <p id="product-stock" hidden>{{product.stock_quantity}}</p>
