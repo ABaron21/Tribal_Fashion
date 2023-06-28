@@ -18,17 +18,17 @@ class Stripe_Web_Handler:
     def _send_order_confirmation(self, order):
         customer_email = order.email
         subject = render_to_string(
-            'checkout/order_confirmation_email/order_confirmation_subject.txt',
+            "order_confirmation_email/order_confirmation_subject.txt",
             {'order': order})
         body = render_to_string(
-            'checkout/order_confirmation_email/order_confirmation_body.txt',
+            "order_confirmation_email/order_confirmation_body.txt",
             {'order': order,
              'contact_email': settings.DEFAULT_FROM_EMAIL})
         send_mail(
-            subject,
-            body,
-            settings.DEFAULT_FROM_EMAIL,
-            [customer_email]
+            subject=subject,
+            message=body,
+            recipient_list=[customer_email],
+            from_email=settings.DEFAULT_FROM_EMAIL,
         )
 
     def handle_event(self, event):
@@ -58,9 +58,9 @@ class Stripe_Web_Handler:
         exist_checks = 1
         while exist_checks <= 5:
             try:
-                order = Order.object.get(
+                order = Order.objects.get(
                     full_name__iexact=shipping_details.name,
-                    email__iexact=billing_details.receipt_email,
+                    email__iexact=billing_details.email,
                     phone_number__iexact=shipping_details.phone,
                     country__iexact=shipping_details.address.country,
                     postcode__iexact=shipping_details.address.postal_code,
@@ -68,7 +68,6 @@ class Stripe_Web_Handler:
                     street_address1__iexact=shipping_details.address.line1,
                     street_address2__iexact=shipping_details.address.line2,
                     county__iexact=shipping_details.address.state,
-                    grand_total=grand_total,
                     stripe_pid=pid
                 )
                 exists = True
@@ -85,9 +84,9 @@ class Stripe_Web_Handler:
         else:
             order = None
             try:
-                order = Order.object.create(
+                order = Order.objects.create(
                     full_name=shipping_details.name,
-                    email=billing_details.reciept_email,
+                    email=billing_details.email,
                     phone_number=shipping_details.phone,
                     country=shipping_details.address.country,
                     postcode=shipping_details.address.postal_code,

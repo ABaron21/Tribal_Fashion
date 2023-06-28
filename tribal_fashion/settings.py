@@ -30,7 +30,7 @@ if 'DEBUG' in os.environ:
 else:
     DEBUG = False
 ALLOWED_HOSTS = ['tribal-fashion-abaron.herokuapp.com', 'localhost',
-                 '8000-abaron21-tribalfashion-u2lmkf3r2g3.ws-eu100.gitpod.io',]
+                 '8000-abaron21-tribalfashion-u2lmkf3r2g3.ws-eu101.gitpod.io',]
 
 
 # Application definition
