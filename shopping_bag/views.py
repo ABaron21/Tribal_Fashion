@@ -23,7 +23,8 @@ def add_to_bag(request, product_id):
         product.stock_quantity = product.stock_quantity - quantity
         product.save()
         messages.success(request,
-                         f'Updated {product.name} quantity to {bag[product_id_str]}')
+                         f'Updated {product.name} \
+                            quantity to {bag[product_id_str]}')
     else:
         bag[product_id] = quantity
         product.stock_quantity = product.stock_quantity - quantity
@@ -56,7 +57,8 @@ def adjust_quantity(request, product_id):
             product.stock_quantity = product.stock_quantity + new_qty
             product.save()
         messages.success(request,
-                         f'Updated {product.name} quantity to {bag[product_id]}')
+                         f'Updated {product.name}\
+                             quantity to {bag[product_id]}')
     else:
         current_qty = bag[product_id_str]
         bag.pop(product_id)

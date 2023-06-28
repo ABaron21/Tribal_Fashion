@@ -57,7 +57,8 @@ def all_products(request):
             if not query:
                 messages.error(request, 'No search criteria was entered')
                 return redirect(reverse('products'))
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = (
+                Q(name__icontains=query) | Q(description__icontains=query))
             products = products.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
@@ -94,7 +95,8 @@ def add_product(request, retailer_id):
         else:
             seller = retailer.user.username
             cancel_return = 'retailer'
-        sku = ''.join(random.choices(string.ascii_uppercase + string.digits, k=16))
+        sku = ''.join(random.choices(
+            string.ascii_uppercase + string.digits, k=16))
         if request.method == 'POST':
             form = ProductForm(request.POST, request.FILES)
             if form.is_valid():
@@ -115,7 +117,8 @@ def add_product(request, retailer_id):
 
         return render(request, template, context)
     else:
-        messages.error(request, 'You do not have authorization to view this page!')
+        messages.error(request,
+                       'You do not have authorization to view this page!')
         return redirect(reverse('home'))
 
 
@@ -147,12 +150,13 @@ def update_product(request, retailer_id):
             product.seller = request.POST['seller']
             product.save()
             if seller == "Tribal Fashion":
-                messages.success(request, f'Product {product.name} with SKU: {product.sku}\
-                    has been updated successfully!')
+                messages.success(request, f'Product {product.name} with SKU: \
+                {product.sku} has been updated successfully!')
                 return redirect(reverse('management_dashboard'))
             else:
-                messages.success(request, f'Product {product.name} with SKU: {product.sku}\
-                    has been updated successfully!')
+                messages.success(request,
+                                 f'Product {product.name} with SKU: \
+                                 {product.sku} has been updated successfully!')
                 return redirect(reverse('retailer_dashboard'))
         form = ProductForm(initial={
             'category': product.category,
@@ -176,5 +180,6 @@ def update_product(request, retailer_id):
 
         return render(request, template, context)
     else:
-        messages.error(request, 'You do not have authorization to view this page!')
+        messages.error(request,
+                       'You do not have authorization to view this page!')
         return redirect(reverse('home'))

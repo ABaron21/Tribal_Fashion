@@ -107,11 +107,22 @@ Heroku - Used to deploy the final development.
 ## Screens
 Each web pages has been tested to make sure that they are fully responsive across all screen sizes beginning with mobile devices and increasing upwards to tablets, laptops and finally desktops as it's the largest screen size expected for a browser window.
 
+### Products Page
+
+#### Mobile
+![products-page-mobile](docx/images/products-page-mobile.png)
+
+#### Tablet
+![products-page-tablet](docx/images/products-page-tablet.png)
+
+#### Desktop
+![products-page-desktop](docx/images/products-page-desktop.png)
+
 ----
 ## Deployment
 Two versions on deployment:
 * GitPod - used throughout the development by typing 'python3 manage.py runserver' in the terminal which gives a prompt to open in a new tab within the browser.
-* Heroku - the final deployment of the website which makes it accesible to the public.
+* Heroku - the final deployment of the website which makes it accesible to the public. In preperation for making deployment to Heroku a couple of changes and migrations had to be made being the storage of the sites static & media files as well as the backend database from the ones used within development. Firstly, the storage which in development uses the sqlite storage but for deployment intergrations had to be made to AWS S3 Buckets to store static & media files. Secondly, the backend database which in deployment gets migrated to ElephantSQL to store all records and data from the site where as in development the site uses Postgres. With the use of environment variables Heroku knows which to by checking to see if a 'DEVELOPMENT' variable exists, to allow Heroku to make intergrations and migrations all keys are stored as environment variables.
 
 ----
 ## Credits

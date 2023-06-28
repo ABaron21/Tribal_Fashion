@@ -1,4 +1,4 @@
-from django.shortcuts import (render, get_object_or_404, 
+from django.shortcuts import (render, get_object_or_404,
                               redirect, reverse)
 from profiles.models import UserAccount, RetailAccount
 from products.models import Product
@@ -133,7 +133,8 @@ def order_cancellation(request, order_number):
                 product.stock_quantity = product.stock_quantity + item.quantity
                 product.save()
         current_request.delete()
-        messages.success(request, f'Order with order number {order_num} has been cancelled successfully.')
+        messages.success(request, f'Order with order number {order_num}\
+             has been cancelled successfully.')
         return redirect(reverse('order_cancel_requests'))
 
     template = 'admin_management/order_cancellation.html'

@@ -192,6 +192,15 @@ Admin Management, Profile, Retailer Dashboard & Add product page/pages haven't b
 Extended CSS for Checkout Page
 ![extra-css-validation](images/code-validation/extra-css-validation.png)
 
+### Python
+Checkout models.py
+
+![checkout-models-py-validation](images/code-validation/checkout-models-python-validation.png)
+
+Checkout models.py
+
+![products-views-py-validation](images/code-validation/products-views-python-validation.png)
+
 ----
 ## Bugs
 ### Profile Page Bug

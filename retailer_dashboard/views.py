@@ -48,6 +48,7 @@ def premium_cancelation(request):
     if request.method == 'POST':
         retailer.cancel_subscription = True
         retailer.save()
-        messages.success(request, 'Your premium cancelation request has been sent!')
+        messages.success(request,
+                         'Your premium cancelation request has been sent!')
         return redirect(reverse('retailer_dashboard'))
     template = 'retailer_dashboard/success.html'

@@ -17,7 +17,7 @@ def retailer_wallet(request):
             else:
                 context = {}
                 return context
-        if user == None:
+        if user is None:
             context = {}
             return context
         else:
