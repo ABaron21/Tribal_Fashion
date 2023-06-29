@@ -175,7 +175,7 @@ select {
 }
 
 /* -------------------------------- Media Queries */
-@media (min-width: 100px) {
+@media (min-width: 1px) {
 
     .nav-link{
         padding: 0.5rem;
@@ -368,7 +368,7 @@ select {
     }
     
     .header-container {
-        padding-top: 200px;
+        padding-top: 50px;
     }
     
     .hero-prompt {
@@ -420,7 +420,22 @@ select {
     }
     
     .header-container{
-        margin-top: 0;
+        margin-top: 50px;
+    }
+    .product-details-section,
+    .products-area,
+    .add-product-container,
+    .retailer-requests,
+    .premium-cancel-requests,
+    .order-cancellations,
+    .profile-container,
+    .order-view-container,
+    .bag_view,
+    .checkout-view,
+    .order-review,
+    .retailer-dashboard,
+    .premium-success{
+        margin-top: 100px;
     }
 }
 
