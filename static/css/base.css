@@ -74,7 +74,8 @@ body {
     color: #000;
 }
 
-.navbar-toggler i {
+.navbar-toggler-main i,
+.navbar-toggler-mobile i{
     color: white;
     height: 3rem;
     width: 3rem;
@@ -174,10 +175,23 @@ select {
 }
 
 /* -------------------------------- Media Queries */
-@media (min-width: 425px) {
+@media (min-width: 350px) {
 
     .nav-link{
         padding: 0.5rem;
+    }
+    .nav-links{
+        padding: 0;
+        margin: 0;
+    }
+    .navbar-toggler-main{
+        visibility: hidden;
+        width: 0;
+        height: 0;
+        padding: 0;
+    }
+    .navbar-toggler-mobile {
+        padding: 8px;
     }
     .dropdown-item{
         padding: 4px 10px;
@@ -204,10 +218,6 @@ select {
         margin-top: 150px;
     }
 
-    .products-area{
-        margin-top: 50px;
-    }
-
     .qty_input{
         padding: 10px;
     }
@@ -215,9 +225,6 @@ select {
         padding: 6px;
     }
 
-    .page-top{
-        margin-top: 150px;
-    }
     .control-text{
         font-size: 12px;
     }
@@ -262,27 +269,40 @@ select {
         font-size: 24px;
     }
 
-    .add-product-container,
-    .retailer-requests,
-    .premium-cancel-requests,
-    .order-cancellations,
-    .profile-container,
-    .order-view-container,
-    .bag_view,
-    .checkout-view,
-    .order-review,
-    .retailer-dashboard,
-    .premium-success{
+    .header-container {
         margin-top: 150px;
     }
     .orders-section{
         margin-bottom: 50px;
+    }
+    .product-details-section{
+        padding-bottom: 50px;
+    }
+}
+
+@media (min-width: 425px) {
+    .navbar-toggler-main{
+        visibility: visible;
+        width: 50px;
+        height: 45px;
+        padding: 4px 12px;
+    }
+    .navbar-toggler-mobile{
+        visibility: hidden;
+        width: 0;
+        height: 0;
+        padding: 0;
     }
 }
 
 @media (min-width: 768px){
     .nav-link{
         padding: 0.75rem;
+    }
+    .decrease-qty, .increase-qty{
+        visibility:visible;
+        width: 36px;
+        height: 38px;
     }
     .bag-table{
         padding: 0 15px;
@@ -378,9 +398,6 @@ select {
         margin-top: 5px;
     }
     
-    .products-area{
-        margin-top: 0px;
-    }
     .product-price{
         font-size: 1rem;
     }
@@ -398,28 +415,11 @@ select {
     .bag-item-price, .bag-item-total{
         font-size: 16px;
     }
-    .decrease-qty, .increase-qty{
-        visibility:visible;
-        width: 36px;
-        height: 38px;
-    }
     .cancellation-number{
         font-size: 20px;
     }
     
-    .page-top,
-    .add-product-container,
-    .retailer-requests,
-    .premium-cancel-requests,
-    .order-cancellations,
-    .allauth-form,
-    .profile-container,
-    .order-view-container,
-    .bag_view,
-    .checkout-view,
-    .order-review,
-    .retailer-dashboard,
-    .premium-success{
+    .header-container{
         margin-top: 0;
     }
 }
