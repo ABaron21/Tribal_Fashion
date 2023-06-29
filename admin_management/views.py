@@ -4,6 +4,9 @@ from profiles.models import UserAccount, RetailAccount
 from products.models import Product
 from checkout.models import OrderLineItem, Order
 from django.contrib import messages
+from django.conf import settings
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 
@@ -55,6 +58,20 @@ def approve_retailer(request, request_user_id):
         account.retailer = True
         account.retailer_requested = False
         account.save()
+        user_email = account.user.email
+        subject = render_to_string(
+            "retailer_response_email/retailer_response_subject.txt",
+            {'retailer': account})
+        body = render_to_string(
+            "retailer_response_email/retailer_response_body_approved.txt",
+            {'retailer': account,
+             'contact_email': settings.DEFAULT_FROM_EMAIL})
+        send_mail(
+            subject=subject,
+            message=body,
+            recipient_list=[user_email],
+            from_email=settings.DEFAULT_FROM_EMAIL,
+        )
         return redirect(reverse('retailer_requests'))
     template = 'admin_management/retailer_request.html'
     context = {
@@ -70,6 +87,20 @@ def decline_retailer(request, request_user_id):
     account = get_object_or_404(UserAccount, pk=request_user_id)
     account.retailer_requested = False
     account.save()
+    user_email = account.user.email
+    subject = render_to_string(
+            "retailer_response_email/retailer_response_subject.txt",
+            {'retailer': account})
+    body = render_to_string(
+            "retailer_response_email/retailer_response_body_declined.txt",
+            {'retailer': account,
+             'contact_email': settings.DEFAULT_FROM_EMAIL})
+    send_mail(
+        subject=subject,
+        message=body,
+        recipient_list=[user_email],
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        )
     return redirect(reverse('retailer_requests'))
 
 
@@ -132,6 +163,20 @@ def order_cancellation(request, order_number):
                 product = item.product
                 product.stock_quantity = product.stock_quantity + item.quantity
                 product.save()
+        customer_email = current_request.email
+        subject = render_to_string(
+            "order_cancellation_email/order_cancellation_subject.txt",
+            {'order': current_request})
+        body = render_to_string(
+            "order_cancellation_email/order_cancellation_body.txt",
+            {'order': current_request,
+             'contact_email': settings.DEFAULT_FROM_EMAIL})
+        send_mail(
+            subject=subject,
+            message=body,
+            recipient_list=[customer_email],
+            from_email=settings.DEFAULT_FROM_EMAIL,
+        )
         current_request.delete()
         messages.success(request, f'Order with order number {order_num}\
              has been cancelled successfully.')

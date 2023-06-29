@@ -1,0 +1,18 @@
+Hello {{order.full_name}},
+
+This is confirming your order placed with Tribal Fashion has been cancelled, please find your order details below:
+
+Order Number: {{order.order_number}}
+Date Placed: {{order.date}}
+
+Total Order Cost: £{{order.total_cost}}
+Delivery Cost: £{{order.delivery_cost}}
+Overall Order Cost: £{{order.overall_total}}
+
+
+If you have any issues or queries please contact us at {{contact_email}}
+
+Thank you again for ordering with us!
+
+Sincerly,
+Tribal Fashion

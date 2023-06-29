@@ -201,10 +201,7 @@ select {
     
     .nav-link{
         padding: 0.5rem;
-    }
-    .nav-link {
         width: 90%;
-        padding: 4px 8px;
     }
     .nav-link p {
         font-size: 12px;
@@ -322,6 +319,13 @@ select {
         width: 0;
         height: 0;
         padding: 0;
+    }
+    .nav-link{
+        width: 100%;
+        padding: 8px 16px;
+    }
+    .nav-link p {
+        font-size: 16px;
     }
 }
 
@@ -455,6 +459,7 @@ select {
     .product-details-section,
     .products-area,
     .add-product-container,
+    .management-dashboard,
     .retailer-requests,
     .premium-cancel-requests,
     .order-cancellations,

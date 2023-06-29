@@ -37,8 +37,6 @@ This project will combine together the basic structuring of HTML & CSS with back
 
 ----
 ## Future Features
-* New Users:
-    * Retrieve a verification email to complete account registration
 * Retail Users:
     * Withdraw money from their account wallet
 
