@@ -72,12 +72,21 @@
                             </a>
                         </td>
                         <td colspan="2" class="text-right">
-                            <a href="{% url 'profile' %}" class="btn rounded-0">
-                                <span class="icon">
-                                    <i class="fas fa-chevron-left"></i>
-                                </span>
-                                <span class="text-uppercase">Back</span>
-                            </a>
+                            {% if request.user.is_authenticated %}
+                                <a href="{% url 'profile' %}" class="btn rounded-0">
+                                    <span class="icon">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="text-uppercase">Back</span>
+                                </a>
+                            {% else %}
+                                <a href="{% url 'home' %}" class="btn rounded-0">
+                                    <span class="icon">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="text-uppercase">Back</span>
+                                </a>
+                            {% endif %}
                         </td>
                     </tr>
                 </table>

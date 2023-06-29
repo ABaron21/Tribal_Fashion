@@ -18,6 +18,8 @@ Country: {{order.country}}
 
 The phone number we have for you on file is {{order.phone_number}}, if your number has changed please update it through your profile or contact us.
 
+Click here to view your order - https://tribal-fashion-abaron.herokuapp.com{% url 'order_view' order_number=order.order_number %}
+
 If you have any issues or queries please contact us at {{contact_email}}
 
 Thank you for ordering with us!

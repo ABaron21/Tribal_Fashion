@@ -91,7 +91,6 @@ def profile_setup(request):
     return render(request, template, context)
 
 
-@login_required
 def order_view(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
     lineitems = OrderLineItem.objects.all()
@@ -103,9 +102,11 @@ def order_view(request, order_number):
     return render(request, template, context)
 
 
-@login_required
 def order_cancel(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
     order.cancel_request = True
     order.save()
-    return redirect(reverse('profile'))
+    if request.user.is_authenicated:
+        return redirect(reverse('profile'))
+    else:
+        return redirect(reverse('home'))
