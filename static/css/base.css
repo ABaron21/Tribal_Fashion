@@ -175,10 +175,39 @@ select {
 }
 
 /* -------------------------------- Media Queries */
-@media (min-width: 1px) {
-
+@media (max-width: 321px) {
+    .navbar-toggler-main{
+        visibility: hidden;
+        width: 0;
+        height: 0;
+        padding: 0;
+    }
+    .nav-link {
+        width: 80%;
+        padding: 4px 8px;
+    }
+    .nav-link p {
+        font-size: 8px;
+    }
+    .nav-links{
+        padding: 0;
+        margin: 0;
+    }
+    .copyright-text{
+        font-size: 10px;
+    }
+}
+@media (min-width: 320px) {
+    
     .nav-link{
         padding: 0.5rem;
+    }
+    .nav-link {
+        width: 90%;
+        padding: 4px 8px;
+    }
+    .nav-link p {
+        font-size: 12px;
     }
     .nav-links{
         padding: 0;
@@ -191,6 +220,7 @@ select {
         padding: 0;
     }
     .navbar-toggler-mobile {
+        display: inline-block;
         padding: 8px;
     }
     .dropdown-item{
