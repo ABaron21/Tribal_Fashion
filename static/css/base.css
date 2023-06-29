@@ -175,7 +175,7 @@ select {
 }
 
 /* -------------------------------- Media Queries */
-@media (min-width: 350px) {
+@media (min-width: 100px) {
 
     .nav-link{
         padding: 0.5rem;
