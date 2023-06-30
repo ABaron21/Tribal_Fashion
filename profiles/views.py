@@ -107,7 +107,7 @@ def order_cancel(request, order_number):
     order.cancel_request = True
     order.save()
     return_location = ''
-    if request.user.is_authenicated:
+    if request.user.is_authenticated:
         return_location = 'profile'
     else:
         return_location = 'home'
