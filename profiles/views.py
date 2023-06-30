@@ -106,7 +106,9 @@ def order_cancel(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
     order.cancel_request = True
     order.save()
+    return_location = ''
     if request.user.is_authenicated:
-        return redirect(reverse('profile'))
+        return_location = 'profile'
     else:
-        return redirect(reverse('home'))
+        return_location = 'home'
+    return redirect(reverse(return_location))
